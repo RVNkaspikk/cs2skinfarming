@@ -3,355 +3,290 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RÆVEN Cases</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RÆVEN — Case Opening</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    background:#07090d;
+    color:#eee;
+    font-family:Arial,Helvetica,sans-serif;
 }
-
-body {
-    background:
-        radial-gradient(circle at 50% -20%, #351010 0%, transparent 45%),
-        #080808;
-    color: white;
-    min-height: 100vh;
+header{
+    height:64px;
+    background:#0d1118;
+    border-bottom:1px solid #202631;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
 }
-
-header {
-    height: 72px;
-    border-bottom: 1px solid #242424;
-    background: rgba(10,10,10,.95);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 7%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
 }
-
-.logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
+.logo b{color:#e52c35}
+nav{display:flex;gap:25px}
+nav a{color:#858d9b;text-decoration:none;font-size:14px}
+nav a:hover{color:white}
+.account{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
-
-.logo span {
-    color: #ff3030;
+.avatar{
+    width:35px;
+    height:35px;
+    border-radius:5px;
+    background:#252c38;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-
-.nav {
-    display: flex;
-    gap: 28px;
+.balance{
+    background:#151a22;
+    border:1px solid #29303b;
+    padding:9px 13px;
+    border-radius:5px;
+    color:#ffd84d;
+    font-weight:bold;
 }
-
-.nav a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 14px;
+.deposit{
+    border:0;
+    border-radius:5px;
+    padding:9px 13px;
+    background:#e22d37;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
-
-.nav a:hover {
-    color: white;
-}
-
-.balance {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.money {
-    background: #151515;
-    border: 1px solid #292929;
-    padding: 10px 15px;
-    border-radius: 9px;
-    color: #ff4444;
-    font-weight: bold;
-}
-
-.deposit {
-    border: 0;
-    background: #e52b2b;
-    color: white;
-    padding: 10px 16px;
-    border-radius: 9px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.deposit:hover {
-    background: #ff3d3d;
-}
-
-.hero {
-    text-align: center;
-    padding: 75px 20px 45px;
-}
-
-.hero h1 {
-    font-size: 48px;
-    font-weight: 900;
-}
-
-.hero h1 span {
-    color: #ff3030;
-}
-
-.hero p {
-    color: #888;
-    margin-top: 12px;
-}
-
-.cases {
-    width: 86%;
-    max-width: 1250px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-    padding-bottom: 60px;
-}
-
-.case {
-    background: linear-gradient(145deg,#141414,#0d0d0d);
-    border: 1px solid #252525;
-    border-radius: 15px;
-    padding: 22px;
-    text-align: center;
-    transition: .2s;
-}
-
-.case:hover {
-    transform: translateY(-5px);
-    border-color: #ff3030;
-    box-shadow: 0 15px 35px rgba(255,0,0,.12);
-}
-
-.case-img {
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 90px;
-    filter: drop-shadow(0 10px 20px rgba(255,0,0,.2));
-}
-
-.case h2 {
-    font-size: 19px;
-    margin-bottom: 8px;
-}
-
-.case-price {
-    color: #ff3b3b;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.open-btn {
-    width: 100%;
-    padding: 12px;
-    background: #e52b2b;
-    border: 0;
-    color: white;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.open-btn:hover {
-    background: #ff4141;
-}
-
-.inventory-section {
-    width: 86%;
-    max-width: 1250px;
-    margin: auto;
-    padding-bottom: 80px;
-}
-
-.inventory-section h2 {
-    margin-bottom: 20px;
-}
-
-.inventory {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
-    gap: 15px;
-}
-
-.item {
-    background: #111;
-    border: 1px solid #252525;
-    border-radius: 12px;
-    padding: 18px;
-    text-align: center;
-}
-
-.item-icon {
-    font-size: 55px;
-    margin-bottom: 10px;
-}
-
-.item-name {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.rarity {
-    margin-top: 7px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.blue { color:#4ca3ff; }
-.purple { color:#a970ff; }
-.pink { color:#ff4fa3; }
-.red { color:#ff4141; }
-.gold { color:#ffd43b; }
-
-.empty {
-    color:#666;
-    padding:25px;
-    border:1px dashed #292929;
-    border-radius:10px;
-    grid-column:1/-1;
+.hero{
     text-align:center;
+    padding:55px 15px 35px;
+}
+.hero h1{
+    font-size:42px;
+    font-weight:900;
+}
+.hero h1 span{color:#e52c35}
+.hero p{
+    color:#737c8b;
+    margin-top:10px;
+}
+.cases{
+    width:88%;
+    max-width:1250px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:17px;
+}
+.case{
+    background:linear-gradient(145deg,#121720,#0d1117);
+    border:1px solid #242b36;
+    border-radius:8px;
+    padding:20px;
+    text-align:center;
+    transition:.2s;
+}
+.case:hover{
+    border-color:#d52c35;
+    transform:translateY(-4px);
+}
+.case-img{
+    height:145px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:80px;
+}
+.case h2{
+    font-size:17px;
+    margin-bottom:8px;
+}
+.price{
+    color:#ffd84d;
+    margin-bottom:14px;
+    font-weight:bold;
+}
+.open{
+    width:100%;
+    padding:11px;
+    border:0;
+    border-radius:5px;
+    background:#e22d37;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.open:hover{background:#ff3c47}
+
+.inventory{
+    width:88%;
+    max-width:1250px;
+    margin:60px auto;
+}
+.inventory h2{
+    margin-bottom:18px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
+    gap:12px;
+}
+.skin{
+    background:#10141b;
+    border:1px solid #242b36;
+    border-radius:6px;
+    padding:16px;
+    text-align:center;
+}
+.skin-icon{
+    font-size:55px;
+    margin:8px;
+}
+.skin-name{
+    font-size:13px;
+    font-weight:bold;
+}
+.skin-rarity{
+    font-size:11px;
+    margin-top:7px;
+    font-weight:bold;
+}
+.blue{color:#65a8ff}
+.purple{color:#a66cff}
+.pink{color:#ed5bb2}
+.red{color:#ef3d46}
+.gold{color:#ffd84d}
+
+.empty{
+    color:#596170;
+    border:1px dashed #292f39;
+    padding:25px;
+    text-align:center;
+    grid-column:1/-1;
 }
 
 /* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.88);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:20;
+}
+.modal.show{display:flex}
+.box{
+    width:92%;
+    max-width:850px;
+    background:#0d1118;
+    border:1px solid #29313d;
+    border-radius:8px;
+    padding:28px;
+}
+.box h2{text-align:center;margin-bottom:22px}
 
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
+.roulette{
+    height:155px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #282f3a;
+    background:#080b10;
+}
+.pointer{
+    position:absolute;
+    z-index:3;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#e52c35;
+}
+.track{
+    position:absolute;
+    left:0;
+    top:20px;
+    display:flex;
+    gap:10px;
+}
+.roll{
+    flex:none;
+    width:125px;
+    height:112px;
+    border:1px solid #252c37;
+    background:#11161e;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-radius:5px;
+}
+.roll span{font-size:45px}
+.roll small{
+    margin-top:7px;
+    text-align:center;
+    font-size:10px;
+    padding:0 4px;
+}
+.result{
+    display:none;
+    text-align:center;
+    margin-top:20px;
+}
+.result-icon{font-size:80px}
+.result-name{
+    font-size:22px;
+    margin-top:8px;
+}
+.close{
+    display:block;
+    margin:20px auto 0;
+    background:#202630;
+    color:white;
+    border:1px solid #333b48;
+    padding:9px 25px;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-.modal.active {
-    display: flex;
+.odds{
+    text-align:center;
+    color:#666f7d;
+    font-size:11px;
+    margin-top:18px;
 }
 
-.modal-box {
-    width: 90%;
-    max-width: 700px;
-    background: #111;
-    border: 1px solid #292929;
-    border-radius: 18px;
-    padding: 30px;
-    text-align: center;
+.deposit-box{
+    max-width:420px;
+    text-align:center;
 }
-
-.modal-box h2 {
-    margin-bottom: 20px;
+.deposit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
 }
-
-.roulette {
-    height: 150px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid #292929;
-    border-radius: 12px;
-    background: #090909;
+.dep{
+    padding:15px;
+    background:#151a22;
+    color:white;
+    border:1px solid #2b323e;
+    border-radius:5px;
+    cursor:pointer;
 }
+.dep:hover{border-color:#e52c35}
 
-.roulette-track {
-    display: flex;
-    gap: 12px;
-    position: absolute;
-    left: 0;
-    top: 25px;
-    transition: transform 4s cubic-bezier(.12,.75,.12,1);
-}
-
-.roulette-item {
-    min-width: 120px;
-    height: 100px;
-    background: #151515;
-    border: 1px solid #292929;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.roulette-item span {
-    font-size: 42px;
-}
-
-.pointer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: #ff3030;
-    z-index: 2;
-}
-
-.result {
-    display: none;
-    margin-top: 22px;
-}
-
-.result-icon {
-    font-size: 80px;
-}
-
-.result h3 {
-    font-size: 23px;
-    margin-top: 8px;
-}
-
-.close {
-    margin-top: 20px;
-    background: #222;
-    border: 1px solid #333;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.deposit-box {
-    max-width: 400px;
-}
-
-.deposit-options {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.deposit-option {
-    background: #181818;
-    border: 1px solid #292929;
-    padding: 15px;
-    border-radius: 9px;
-    color: white;
-    cursor: pointer;
-}
-
-.deposit-option:hover {
-    border-color: #ff3030;
-}
-
-footer {
-    text-align: center;
-    border-top: 1px solid #202020;
-    padding: 25px;
-    color: #555;
-    font-size: 12px;
+footer{
+    text-align:center;
+    border-top:1px solid #1c222b;
+    padding:25px;
+    color:#4d5664;
+    font-size:11px;
 }
 </style>
 </head>
@@ -359,75 +294,86 @@ footer {
 <body>
 
 <header>
-    <div class="logo">RÆ<span>VEN</span></div>
+    <div class="logo">RÆ<b>VEN</b></div>
 
-    <nav class="nav">
+    <nav>
         <a href="#cases">Cases</a>
         <a href="#inventory">Inventory</a>
     </nav>
 
-    <div class="balance">
-        <div class="money">$<span id="balance">100.00</span></div>
-        <button class="deposit" onclick="openDeposit()">+ Deposit</button>
+    <div class="account">
+        <div class="balance">$<span id="balance">100.00</span></div>
+        <button class="deposit" onclick="depositOpen()">+ Deposit</button>
+        <div class="avatar">R</div>
     </div>
 </header>
 
 <section class="hero">
     <h1>OPEN <span>CASES</span></h1>
-    <p>Open demo cases and collect virtual skins.</p>
+    <p>Open virtual CS2-style cases and collect skins.</p>
 </section>
 
 <section class="cases" id="cases"></section>
 
-<section class="inventory-section" id="inventory">
+<section class="inventory" id="inventory">
     <h2>Your Inventory</h2>
-    <div class="inventory" id="inventoryList">
-        <div class="empty">Your inventory is empty.</div>
+    <div class="grid" id="inventoryGrid">
+        <div class="empty">No skins yet.</div>
     </div>
 </section>
 
 <footer>
-    RÆVEN CASES — DEMO / VIRTUAL CURRENCY ONLY
+    RÆVEN CASES — DEMO VIRTUAL CURRENCY ONLY
 </footer>
+
 
 <!-- CASE MODAL -->
 
 <div class="modal" id="caseModal">
-    <div class="modal-box">
-        <h2 id="modalTitle">Opening case...</h2>
+    <div class="box">
+
+        <h2 id="openingText">Opening...</h2>
 
         <div class="roulette">
             <div class="pointer"></div>
-            <div class="roulette-track" id="rouletteTrack"></div>
+            <div class="track" id="track"></div>
+        </div>
+
+        <div class="odds">
+            Blue 79% · Purple 17% · Pink 3% · Red 0.9% · Gold 0.1%
         </div>
 
         <div class="result" id="result">
             <div class="result-icon" id="resultIcon"></div>
-            <h3 id="resultName"></h3>
-            <div class="rarity" id="resultRarity"></div>
+            <div class="result-name" id="resultName"></div>
+            <div class="skin-rarity" id="resultRarity"></div>
         </div>
 
         <button class="close" onclick="closeCase()">Close</button>
     </div>
 </div>
 
-<!-- DEPOSIT MODAL -->
+
+<!-- DEPOSIT -->
 
 <div class="modal" id="depositModal">
-    <div class="modal-box deposit-box">
-        <h2>Demo Deposit</h2>
-        <p style="color:#777">Adds virtual balance only.</p>
+    <div class="box deposit-box">
+        <h2>Demo Balance</h2>
+        <p style="color:#687180">
+            Add virtual credits for testing.
+        </p>
 
-        <div class="deposit-options">
-            <button class="deposit-option" onclick="addBalance(10)">+$10</button>
-            <button class="deposit-option" onclick="addBalance(25)">+$25</button>
-            <button class="deposit-option" onclick="addBalance(50)">+$50</button>
-            <button class="deposit-option" onclick="addBalance(100)">+$100</button>
+        <div class="deposit-grid">
+            <button class="dep" onclick="addMoney(10)">+$10</button>
+            <button class="dep" onclick="addMoney(25)">+$25</button>
+            <button class="dep" onclick="addMoney(50)">+$50</button>
+            <button class="dep" onclick="addMoney(100)">+$100</button>
         </div>
 
-        <button class="close" onclick="closeDeposit()">Close</button>
+        <button class="close" onclick="depositClose()">Close</button>
     </div>
 </div>
+
 
 <script>
 
@@ -435,74 +381,122 @@ let balance = 100;
 let inventory = [];
 
 const cases = [
-    {
-        name: "RÆVEN STARTER",
-        price: 2.50,
-        icon: "📦",
-        items: [
-            ["Glock-18 | Night", "🔫", "blue"],
-            ["USP-S | Black", "🔫", "blue"],
-            ["AK-47 | Slate", "🔫", "purple"],
-            ["M4A1-S | Dark", "🔫", "purple"],
-            ["AWP | Redline", "🔫", "pink"],
-            ["AK-47 | Fire", "🔫", "red"],
-            ["★ Karambit", "🔪", "gold"]
-        ]
-    },
-    {
-        name: "RED STORM",
-        price: 7.50,
-        icon: "🔥",
-        items: [
-            ["P250 | Red", "🔫", "blue"],
-            ["MP9 | Blaze", "🔫", "blue"],
-            ["M4A4 | Evil", "🔫", "purple"],
-            ["AK-47 | Blood", "🔫", "pink"],
-            ["AWP | Hyper", "🔫", "pink"],
-            ["M4A1-S | Hot Rod", "🔫", "red"],
-            ["★ Butterfly Knife", "🔪", "gold"]
-        ]
-    },
-    {
-        name: "BLACKOUT",
-        price: 15.00,
-        icon: "🖤",
-        items: [
-            ["USP-S | Dark", "🔫", "blue"],
-            ["FAMAS | Night", "🔫", "blue"],
-            ["AK-47 | Black", "🔫", "purple"],
-            ["M4A1-S | Print", "🔫", "pink"],
-            ["AWP | Black", "🔫", "pink"],
-            ["AK-47 | Vulcan", "🔫", "red"],
-            ["★ Karambit | Black", "🔪", "gold"]
-        ]
-    },
-    {
-        name: "RÆVEN ELITE",
-        price: 30.00,
-        icon: "👑",
-        items: [
-            ["Five-SeveN | Blue", "🔫", "blue"],
-            ["Desert Eagle | Night", "🔫", "purple"],
-            ["M4A4 | Emperor", "🔫", "pink"],
-            ["AK-47 | Asiimov", "🔫", "pink"],
-            ["AWP | Dragon", "🔫", "red"],
-            ["M4A1-S | Printstream", "🔫", "red"],
-            ["★ Butterfly Knife", "🔪", "gold"]
-        ]
-    }
+
+{
+    name:"RÆVEN STARTER",
+    price:2.50,
+    icon:"📦",
+    items:[
+        ["Glock-18 | Night","🔫","blue"],
+        ["USP-S | Black","🔫","blue"],
+        ["P250 | Sand","🔫","blue"],
+        ["MP9 | Grey","🔫","blue"],
+        ["AK-47 | Slate","🔫","purple"],
+        ["M4A4 | Dark","🔫","purple"],
+        ["AWP | Redline","🔫","pink"],
+        ["AK-47 | Blood","🔫","red"],
+        ["★ Karambit","🔪","gold"]
+    ]
+},
+
+{
+    name:"RED STORM",
+    price:7.50,
+    icon:"🔥",
+    items:[
+        ["Glock-18 | Red","🔫","blue"],
+        ["MP9 | Blaze","🔫","blue"],
+        ["USP-S | Blood","🔫","blue"],
+        ["FAMAS | Night","🔫","blue"],
+        ["M4A4 | Evil","🔫","purple"],
+        ["AK-47 | Redline","🔫","purple"],
+        ["AWP | Hyper Beast","🔫","pink"],
+        ["AK-47 | Fire","🔫","red"],
+        ["★ Butterfly Knife","🔪","gold"]
+    ]
+},
+
+{
+    name:"BLACKOUT",
+    price:15,
+    icon:"🖤",
+    items:[
+        ["P250 | Black","🔫","blue"],
+        ["MP9 | Dark","🔫","blue"],
+        ["USP-S | Night","🔫","blue"],
+        ["FAMAS | Grey","🔫","blue"],
+        ["AK-47 | Slate","🔫","purple"],
+        ["M4A1-S | Black","🔫","purple"],
+        ["M4A1-S | Printstream","🔫","pink"],
+        ["AK-47 | Vulcan","🔫","red"],
+        ["★ Karambit | Black","🔪","gold"]
+    ]
+},
+
+{
+    name:"RÆVEN ELITE",
+    price:30,
+    icon:"👑",
+    items:[
+        ["Glock-18 | Blue","🔫","blue"],
+        ["USP-S | Dark","🔫","blue"],
+        ["Desert Eagle | Night","🔫","blue"],
+        ["M4A4 | Dark","🔫","purple"],
+        ["AK-47 | Asiimov","🔫","purple"],
+        ["M4A1-S | Printstream","🔫","pink"],
+        ["AWP | Dragon","🔫","red"],
+        ["AK-47 | Fire Serpent","🔫","red"],
+        ["★ Butterfly Knife","🔪","gold"]
+    ]
+}
+
 ];
 
-function renderCases() {
-    const container = document.getElementById("cases");
 
-    cases.forEach((c, index) => {
-        container.innerHTML += `
+/* RARITY SYSTEM */
+
+function getRarity(){
+
+    const roll = Math.random()*100;
+
+    if(roll < 0.1) return "gold";
+    if(roll < 1.0) return "red";
+    if(roll < 4.0) return "pink";
+    if(roll < 21.0) return "purple";
+
+    return "blue";
+}
+
+
+function getItem(items){
+
+    const rarity=getRarity();
+
+    const same=items.filter(x=>x[2]===rarity);
+
+    if(same.length)
+        return same[Math.floor(Math.random()*same.length)];
+
+    const blues=items.filter(x=>x[2]==="blue");
+
+    return blues[Math.floor(Math.random()*blues.length)];
+}
+
+
+/* CASE CARDS */
+
+function renderCases(){
+
+    const box=document.getElementById("cases");
+
+    cases.forEach((c,i)=>{
+
+        box.innerHTML+=`
             <div class="case">
                 <div class="case-img">${c.icon}</div>
                 <h2>${c.name}</h2>
-                <div class="case-price">$${c.price.toFixed(2)}</div>
-                <button class="open-btn" onclick="openCase(${index})">
+                <div class="price">$${c.price.toFixed(2)}</div>
+                <button class="open" onclick="openCase(${i})">
                     OPEN CASE
                 </button>
             </div>
@@ -510,152 +504,168 @@ function renderCases() {
     });
 }
 
-function updateBalance() {
-    document.getElementById("balance").textContent = balance.toFixed(2);
+
+/* BALANCE */
+
+function updateBalance(){
+    document.getElementById("balance").textContent=
+        balance.toFixed(2);
 }
 
-function openDeposit() {
-    document.getElementById("depositModal").classList.add("active");
+function depositOpen(){
+    document.getElementById("depositModal")
+        .classList.add("show");
 }
 
-function closeDeposit() {
-    document.getElementById("depositModal").classList.remove("active");
+function depositClose(){
+    document.getElementById("depositModal")
+        .classList.remove("show");
 }
 
-function addBalance(amount) {
-    balance += amount;
+function addMoney(amount){
+    balance+=amount;
     updateBalance();
-    closeDeposit();
+    depositClose();
 }
 
-function randomItem(items) {
-    const roll = Math.random() * 100;
 
-    let rarity;
+/* OPEN CASE */
 
-    if (roll < 3) rarity = "gold";
-    else if (roll < 10) rarity = "red";
-    else if (roll < 25) rarity = "pink";
-    else if (roll < 50) rarity = "purple";
-    else rarity = "blue";
+function openCase(index){
 
-    const possible = items.filter(item => item[2] === rarity);
+    const c=cases[index];
 
-    return possible.length
-        ? possible[Math.floor(Math.random() * possible.length)]
-        : items[Math.floor(Math.random() * items.length)];
-}
-
-function openCase(index) {
-
-    const c = cases[index];
-
-    if (balance < c.price) {
-        alert("Not enough demo balance!");
+    if(balance<c.price){
+        alert("Not enough demo balance.");
         return;
     }
 
-    balance -= c.price;
+    balance-=c.price;
     updateBalance();
 
-    const modal = document.getElementById("caseModal");
-    const track = document.getElementById("rouletteTrack");
-    const result = document.getElementById("result");
+    const modal=document.getElementById("caseModal");
+    const track=document.getElementById("track");
+    const result=document.getElementById("result");
 
-    modal.classList.add("active");
-    result.style.display = "none";
+    modal.classList.add("show");
+    result.style.display="none";
 
-    document.getElementById("modalTitle").textContent =
-        "Opening " + c.name + "...";
+    document.getElementById("openingText").textContent=
+        "Opening "+c.name+"...";
 
-    track.style.transition = "none";
-    track.style.transform = "translateX(0px)";
-    track.innerHTML = "";
+    track.innerHTML="";
+    track.style.transition="none";
+    track.style.transform="translateX(0px)";
 
-    const winningItem = randomItem(c.items);
+    const winner=getItem(c.items);
 
-    let items = [];
+    let rolls=[];
 
-    for (let i = 0; i < 45; i++) {
-        items.push(c.items[Math.floor(Math.random() * c.items.length)]);
+    for(let i=0;i<50;i++){
+        rolls.push(
+            c.items[Math.floor(Math.random()*c.items.length)]
+        );
     }
 
-    items[38] = winningItem;
+    /* Winning item */
 
-    items.forEach(item => {
-        track.innerHTML += `
-            <div class="roulette-item">
+    rolls[40]=winner;
+
+    rolls.forEach(item=>{
+
+        track.innerHTML+=`
+            <div class="roll">
                 <span>${item[1]}</span>
-                <small class="${item[2]}">${item[0]}</small>
+                <small class="${item[2]}">
+                    ${item[0]}
+                </small>
             </div>
         `;
     });
 
-    setTimeout(() => {
 
-        const itemWidth = 132;
-        const target = (itemWidth * 38) - 280;
+    setTimeout(()=>{
 
-        track.style.transition =
-            "transform 4s cubic-bezier(.12,.75,.12,1)";
+        const itemWidth=135;
 
-        track.style.transform =
+        const target=
+            itemWidth*40-337;
+
+        track.style.transition=
+            "transform 5s cubic-bezier(.08,.75,.12,1)";
+
+        track.style.transform=
             `translateX(-${target}px)`;
 
-    }, 100);
+    },100);
 
-    setTimeout(() => {
 
-        document.getElementById("resultIcon").textContent =
-            winningItem[1];
+    setTimeout(()=>{
 
-        document.getElementById("resultName").textContent =
-            winningItem[0];
+        document.getElementById("resultIcon")
+            .textContent=winner[1];
 
-        const rarity = document.getElementById("resultRarity");
+        document.getElementById("resultName")
+            .textContent=winner[0];
 
-        rarity.textContent =
-            winningItem[2].toUpperCase();
+        const r=document.getElementById("resultRarity");
 
-        rarity.className =
-            "rarity " + winningItem[2];
+        r.textContent=winner[2].toUpperCase();
 
-        result.style.display = "block";
+        r.className=
+            "skin-rarity "+winner[2];
 
-        inventory.push(winningItem);
+        result.style.display="block";
+
+        inventory.push(winner);
+
         renderInventory();
 
-    }, 4300);
+    },5300);
 }
 
-function closeCase() {
-    document.getElementById("caseModal").classList.remove("active");
+
+function closeCase(){
+    document.getElementById("caseModal")
+        .classList.remove("show");
 }
 
-function renderInventory() {
 
-    const list = document.getElementById("inventoryList");
+/* INVENTORY */
 
-    if (inventory.length === 0) {
-        list.innerHTML =
-            `<div class="empty">Your inventory is empty.</div>`;
+function renderInventory(){
+
+    const grid=
+        document.getElementById("inventoryGrid");
+
+    if(!inventory.length){
+
+        grid.innerHTML=
+            `<div class="empty">No skins yet.</div>`;
+
         return;
     }
 
-    list.innerHTML = "";
+    grid.innerHTML="";
 
-    inventory.forEach(item => {
-        list.innerHTML += `
-            <div class="item">
-                <div class="item-icon">${item[1]}</div>
-                <div class="item-name">${item[0]}</div>
-                <div class="rarity ${item[2]}">
+    inventory.forEach(item=>{
+
+        grid.innerHTML+=`
+            <div class="skin">
+                <div class="skin-icon">${item[1]}</div>
+
+                <div class="skin-name">
+                    ${item[0]}
+                </div>
+
+                <div class="skin-rarity ${item[2]}">
                     ${item[2].toUpperCase()}
                 </div>
             </div>
         `;
     });
 }
+
 
 renderCases();
 updateBalance();
