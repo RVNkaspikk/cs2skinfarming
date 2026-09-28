@@ -3,57 +3,85 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RÆVEN — Case Demo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RÆVEN — CS2 Case Demo</title>
 
 <style>
+:root{
+    --bg:#07090d;
+    --panel:#0f1319;
+    --panel2:#151a22;
+    --border:#292f39;
+    --red:#e52d38;
+    --red2:#ff4651;
+    --text:#f5f6f8;
+    --muted:#78818e;
+    --yellow:#ffd34e;
+    --green:#4ee28b;
+}
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    background:#080a0e;
-    color:#fff;
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(229,45,56,.16),
+            transparent 35%
+        ),
+        var(--bg);
+    color:var(--text);
     font-family:Arial,Helvetica,sans-serif;
 }
 
+/* HEADER */
+
 header{
     height:68px;
-    background:#0c0f14;
-    border-bottom:1px solid #272c35;
+    padding:0 5%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 5%;
+    background:#0a0d12;
+    border-bottom:1px solid var(--border);
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:50;
 }
 
 .logo{
     font-size:25px;
-    font-weight:900;
+    font-weight:1000;
     letter-spacing:2px;
 }
 
 .logo span{
-    color:#e52d38;
+    color:var(--red);
 }
 
 nav{
     display:flex;
-    gap:25px;
+    gap:26px;
 }
 
 nav a{
-    color:#858c97;
     text-decoration:none;
+    color:#858d99;
+    font-size:14px;
+    font-weight:700;
 }
 
 nav a:hover{
-    color:white;
+    color:#fff;
 }
 
 .account{
@@ -63,22 +91,28 @@ nav a:hover{
 }
 
 .balance{
-    background:#151a21;
-    border:1px solid #2a3039;
-    border-radius:6px;
     padding:9px 13px;
-    color:#ffd34e;
+    border-radius:6px;
+    border:1px solid var(--border);
+    background:#151a22;
+    color:var(--yellow);
     font-weight:900;
 }
 
-.steam{
-    background:#1b2838;
-    border:1px solid #40536a;
-    color:#dce8f4;
+.steam-btn{
+    padding:9px 13px;
     border-radius:6px;
-    padding:9px 12px;
-    font-weight:800;
+    border:1px solid #3b5066;
+    background:#1b2838;
+    color:#dce8f3;
+    font-weight:900;
     cursor:pointer;
+}
+
+.steam-btn.connected{
+    background:#164d32;
+    border-color:#286e49;
+    color:#8ff0b8;
 }
 
 .avatar{
@@ -99,7 +133,7 @@ nav a:hover{
     max-width:1200px;
     min-height:290px;
     margin:30px auto;
-    border:1px solid #292f38;
+    border:1px solid var(--border);
     border-radius:12px;
     overflow:hidden;
     position:relative;
@@ -107,9 +141,13 @@ nav a:hover{
         radial-gradient(
             circle at 75% 50%,
             rgba(229,45,56,.25),
-            transparent 35%
+            transparent 34%
         ),
-        #11141a;
+        linear-gradient(
+            120deg,
+            #13171e,
+            #0c0f14
+        );
 }
 
 .hero-content{
@@ -120,39 +158,74 @@ nav a:hover{
 
 .badge{
     display:inline-block;
+    padding:7px 10px;
+    border-radius:5px;
     background:rgba(229,45,56,.12);
     border:1px solid rgba(229,45,56,.35);
     color:#ff6570;
-    border-radius:5px;
-    padding:7px 10px;
     font-size:11px;
     font-weight:900;
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 .hero h1{
     font-size:44px;
-    max-width:700px;
+    max-width:720px;
 }
 
 .hero h1 span{
-    color:#e52d38;
+    color:var(--red);
 }
 
 .hero p{
-    color:#969da8;
-    margin-top:14px;
-    line-height:1.6;
     max-width:580px;
+    margin-top:14px;
+    color:#969da8;
+    line-height:1.6;
 }
 
 .hero-art{
     position:absolute;
     right:8%;
-    bottom:-25px;
+    bottom:-20px;
     font-size:190px;
-    opacity:.18;
+    opacity:.17;
     transform:rotate(-10deg);
+}
+
+/* STEAM PANEL */
+
+.steam-panel{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto 25px;
+    padding:17px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    border-radius:9px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.steam-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.steam-info span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.steam-status{
+    color:#ff6871;
+    font-size:12px;
+    font-weight:900;
+}
+
+.steam-status.connected{
+    color:var(--green);
 }
 
 /* TUTORIAL */
@@ -166,7 +239,7 @@ nav a:hover{
     border-radius:8px;
     background:rgba(229,45,56,.08);
     border:1px solid rgba(229,45,56,.25);
-    color:#d7dbe0;
+    color:#d9dce1;
     font-size:13px;
 }
 
@@ -180,8 +253,8 @@ nav a:hover{
 
 .section-title{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     margin-bottom:18px;
 }
 
@@ -190,7 +263,7 @@ nav a:hover{
 }
 
 .section-title span{
-    color:#6f7782;
+    color:var(--muted);
     font-size:12px;
 }
 
@@ -204,12 +277,13 @@ nav a:hover{
 }
 
 .case{
-    background:linear-gradient(
-        145deg,
-        #151a22,
-        #0e1117
-    );
-    border:1px solid #292f38;
+    background:
+        linear-gradient(
+            145deg,
+            #151a22,
+            #0e1117
+        );
+    border:1px solid var(--border);
     border-radius:9px;
     padding:18px;
     transition:.2s;
@@ -217,25 +291,25 @@ nav a:hover{
 
 .case:hover{
     transform:translateY(-4px);
-    border-color:#662a30;
+    border-color:#63282d;
 }
 
 .case.locked{
-    opacity:.4;
+    opacity:.42;
     filter:grayscale(.6);
 }
 
 .case-art{
     height:145px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 }
 
 .case-icon{
     font-size:80px;
     filter:drop-shadow(
-        0 15px 20px rgba(0,0,0,.6)
+        0 15px 20px rgba(0,0,0,.55)
     );
 }
 
@@ -245,7 +319,7 @@ nav a:hover{
 }
 
 .case-description{
-    color:#707986;
+    color:#737c88;
     font-size:11px;
     margin-top:6px;
 }
@@ -258,13 +332,13 @@ nav a:hover{
 }
 
 .price{
-    color:#ffd34e;
+    color:var(--yellow);
     font-weight:900;
 }
 
 .open{
     border:0;
-    background:#e52d38;
+    background:var(--red);
     color:#fff;
     padding:9px 14px;
     border-radius:6px;
@@ -273,7 +347,7 @@ nav a:hover{
 }
 
 .open:hover{
-    background:#ff4651;
+    background:var(--red2);
 }
 
 .open:disabled{
@@ -286,15 +360,16 @@ nav a:hover{
 .inventory{
     display:grid;
     grid-template-columns:
-        repeat(auto-fill,minmax(180px,1fr));
-    gap:12px;
+        repeat(auto-fill,minmax(190px,1fr));
+    gap:13px;
 }
 
 .item{
+    position:relative;
     background:#10141a;
-    border:1px solid #292f38;
+    border:1px solid var(--border);
     border-radius:8px;
-    padding:16px;
+    padding:17px;
     text-align:center;
 }
 
@@ -304,6 +379,7 @@ nav a:hover{
 }
 
 .item-name{
+    min-height:30px;
     font-size:12px;
     font-weight:900;
 }
@@ -314,30 +390,34 @@ nav a:hover{
     font-weight:900;
 }
 
-.gold{
-    color:#ffd34e;
+.item-price{
+    margin-top:7px;
+    color:var(--yellow);
+    font-size:11px;
+    font-weight:900;
 }
 
-.blue{
-    color:#5ba9ff;
+.sell{
+    width:100%;
+    margin-top:12px;
+    border:1px solid #3c464f;
+    background:#171d24;
+    color:#fff;
+    border-radius:6px;
+    padding:8px;
+    font-weight:900;
+    cursor:pointer;
 }
 
-.purple{
-    color:#a970ff;
-}
-
-.pink{
-    color:#ed5aae;
-}
-
-.red{
-    color:#ef414a;
+.sell:hover{
+    background:#202831;
+    border-color:#66717d;
 }
 
 .empty{
     grid-column:1/-1;
     text-align:center;
-    padding:30px;
+    padding:32px;
     border:1px dashed #2a3039;
     border-radius:8px;
     color:#59616d;
@@ -348,11 +428,11 @@ nav a:hover{
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.91);
     display:none;
     align-items:center;
     justify-content:center;
     padding:15px;
+    background:rgba(0,0,0,.92);
     z-index:100;
 }
 
@@ -425,6 +505,12 @@ nav a:hover{
     padding:0 5px;
 }
 
+.blue{color:#5ba9ff}
+.purple{color:#a970ff}
+.pink{color:#ed5aae}
+.red{color:#ef414a}
+.gold{color:#ffd34e}
+
 .odds{
     text-align:center;
     color:#68717d;
@@ -448,9 +534,9 @@ nav a:hover{
 }
 
 .result-rarity{
+    margin-top:8px;
     font-size:11px;
     font-weight:900;
-    margin-top:8px;
 }
 
 .close{
@@ -495,6 +581,12 @@ footer{
     .balance{
         display:none;
     }
+
+    .steam-panel{
+        flex-direction:column;
+        gap:12px;
+        align-items:flex-start;
+    }
 }
 </style>
 </head>
@@ -518,11 +610,14 @@ footer{
             $<span id="balance">0.00</span>
         </div>
 
-        <button class="steam" onclick="steamDemo()">
-            Steam Demo
+        <button
+            class="steam-btn"
+            id="steamButton"
+            onclick="connectSteam()">
+            Connect Steam
         </button>
 
-        <div class="avatar">
+        <div class="avatar" id="avatar">
             R
         </div>
 
@@ -545,8 +640,8 @@ footer{
         </h1>
 
         <p>
-            Začni s $0. První tutorial case je zdarma
-            a musíš ho otevřít, aby se odemkly ostatní
+            Začni s $0. První tutorial case je zdarma.
+            Po jeho otevření se odemknou ostatní
             demo cases.
         </p>
 
@@ -557,6 +652,30 @@ footer{
     </div>
 
 </section>
+
+
+<div class="steam-panel">
+
+    <div class="steam-info">
+
+        <strong>
+            Steam account
+        </strong>
+
+        <span id="steamText">
+            Steam není připojen.
+            Toto je pouze demo.
+        </span>
+
+    </div>
+
+    <div
+        class="steam-status"
+        id="steamStatus">
+        NOT CONNECTED
+    </div>
+
+</div>
 
 
 <div class="tutorial" id="tutorialMessage">
@@ -571,12 +690,15 @@ footer{
         <h2>Cases</h2>
 
         <span>
-            SAFE DEMO
+            Virtual demo
         </span>
 
     </div>
 
-    <div class="cases" id="caseList"></div>
+    <div
+        class="cases"
+        id="caseList">
+    </div>
 
 </section>
 
@@ -593,37 +715,43 @@ footer{
 
     </div>
 
-    <div class="inventory" id="inventoryList">
-
-        <div class="empty">
-            Your inventory is empty.
-        </div>
-
+    <div
+        class="inventory"
+        id="inventoryList">
     </div>
 
 </section>
 
 
 <footer>
-    RÆVEN CASES — DEMO ONLY · NO REAL MONEY · NO STEAM TRANSFER
+    RÆVEN CASES — SAFE DEMO · NO REAL MONEY · NO REAL STEAM TRADING
 </footer>
 
 
-<div class="modal" id="caseModal">
+<!-- OPEN CASE MODAL -->
+
+<div
+    class="modal"
+    id="caseModal">
 
     <div class="modal-box">
 
         <div class="modal-title">
+
             <h2 id="openingTitle">
                 Opening...
             </h2>
+
         </div>
 
         <div class="roulette">
 
             <div class="pointer"></div>
 
-            <div class="track" id="track"></div>
+            <div
+                class="track"
+                id="track">
+            </div>
 
         </div>
 
@@ -631,23 +759,30 @@ footer{
             DEMO MODE · 100% KNIFE
         </div>
 
-        <div class="result" id="result">
+        <div
+            class="result"
+            id="result">
 
-            <div class="result-icon" id="resultIcon">
-                🔪
+            <div
+                class="result-icon"
+                id="resultIcon">
             </div>
 
-            <div class="result-name" id="resultName"></div>
+            <div
+                class="result-name"
+                id="resultName">
+            </div>
 
             <div
                 class="result-rarity gold"
                 id="resultRarity">
-                GOLD
             </div>
 
         </div>
 
-        <button class="close" onclick="closeCase()">
+        <button
+            class="close"
+            onclick="closeCase()">
             Close
         </button>
 
@@ -666,10 +801,11 @@ let balance = 0;
 let inventory = [];
 let tutorialDone = false;
 let opening = false;
+let steamConnected = false;
 
 
 /* =========================
-   CASES
+   CASE DATA
 ========================= */
 
 const cases = [
@@ -682,10 +818,10 @@ const cases = [
         tutorial:true,
 
         items:[
-            ["★ Karambit | Demo Doppler","🔪","gold"],
-            ["★ Butterfly Knife | Demo","🔪","gold"],
-            ["★ M9 Bayonet | Demo","🔪","gold"],
-            ["★ Talon Knife | Demo","🔪","gold"]
+            ["★ Karambit | Demo Doppler","🔪","gold",50],
+            ["★ Butterfly Knife | Demo","🔪","gold",45],
+            ["★ M9 Bayonet | Demo","🔪","gold",40],
+            ["★ Talon Knife | Demo","🔪","gold",35]
         ]
     },
 
@@ -697,10 +833,10 @@ const cases = [
         tutorial:false,
 
         items:[
-            ["★ Karambit | Demo Doppler","🔪","gold"],
-            ["★ Butterfly Knife | Demo","🔪","gold"],
-            ["AK-47 | Slate","🔫","purple"],
-            ["AWP | Neo-Noir","🔫","pink"]
+            ["★ Karambit | Demo Doppler","🔪","gold",50],
+            ["★ Butterfly Knife | Demo","🔪","gold",45],
+            ["AK-47 | Slate","🔫","purple",12],
+            ["AWP | Neo-Noir","🔫","pink",18]
         ]
     },
 
@@ -712,10 +848,10 @@ const cases = [
         tutorial:false,
 
         items:[
-            ["★ M9 Bayonet | Demo","🔪","gold"],
-            ["★ Talon Knife | Demo","🔪","gold"],
-            ["M4A1-S | Printstream","🔫","red"],
-            ["AK-47 | Neon Rider","🔫","purple"]
+            ["★ M9 Bayonet | Demo","🔪","gold",60],
+            ["★ Talon Knife | Demo","🔪","gold",55],
+            ["M4A1-S | Printstream","🔫","red",28],
+            ["AK-47 | Neon Rider","🔫","purple",20]
         ]
     },
 
@@ -727,10 +863,10 @@ const cases = [
         tutorial:false,
 
         items:[
-            ["★ Butterfly Knife | Demo","🔪","gold"],
-            ["★ Karambit | Demo Doppler","🔪","gold"],
-            ["★ M9 Bayonet | Demo","🔪","gold"],
-            ["AWP | Containment Breach","🔫","pink"]
+            ["★ Butterfly Knife | Demo","🔪","gold",100],
+            ["★ Karambit | Demo Doppler","🔪","gold",95],
+            ["★ M9 Bayonet | Demo","🔪","gold",85],
+            ["AWP | Containment Breach","🔫","pink",35]
         ]
     }
 
@@ -738,28 +874,20 @@ const cases = [
 
 
 /* =========================
-   100% KNIFE RANDOMIZER
+   RANDOM KNIFE
 ========================= */
 
 function randomKnife(items){
 
     const knives =
-        items.filter(item => item[2] === "gold");
+        items.filter(item =>
+            item[2] === "gold"
+        );
 
-    if(knives.length > 0){
-
-        return knives[
-            Math.floor(
-                Math.random() * knives.length
-            )
-        ];
-
-    }
-
-    return [
-        "★ Demo Knife",
-        "🔪",
-        "gold"
+    return knives[
+        Math.floor(
+            Math.random() * knives.length
+        )
     ];
 }
 
@@ -778,11 +906,14 @@ function renderCases(){
     cases.forEach((c,index)=>{
 
         const locked =
-            !c.tutorial && !tutorialDone;
+            !c.tutorial &&
+            !tutorialDone;
 
         list.innerHTML += `
 
-            <div class="case ${locked ? "locked" : ""}">
+            <div
+                class="case
+                ${locked ? "locked" : ""}">
 
                 <div class="case-art">
                     <div class="case-icon">
@@ -811,15 +942,13 @@ function renderCases(){
                     <button
                         class="open"
                         onclick="openCase(${index})"
-                        ${locked ? "disabled" : ""}
-                    >
+                        ${locked ? "disabled" : ""}>
                         ${locked ? "LOCKED" : "OPEN"}
                     </button>
 
                 </div>
 
             </div>
-
         `;
 
     });
@@ -893,26 +1022,19 @@ function openCase(index){
         "Opening " + c.name + "...";
 
     track.style.transition = "none";
-
-    track.style.transform =
-        "translateX(0px)";
-
+    track.style.transform = "translateX(0px)";
     track.innerHTML = "";
 
 
     /*
-       VÝSLEDEK JE VYBRÁN
-       NÁHODNĚ V MOMENTĚ OTEVŘENÍ.
-       V TÉTO DEMO VERZI JE VŽDY KNIFE.
+       DEMO:
+       Každé otevření vybere
+       náhodný knife.
     */
 
     const winner =
         randomKnife(c.items);
 
-
-    /*
-       Vytvoření animace.
-    */
 
     const visual = [];
 
@@ -942,12 +1064,13 @@ function openCase(index){
                     ${item[1]}
                 </div>
 
-                <div class="roll-name ${item[2]}">
+                <div
+                    class="roll-name
+                    ${item[2]}">
                     ${item[0]}
                 </div>
 
             </div>
-
         `;
 
     });
@@ -981,7 +1104,7 @@ function openCase(index){
 
 
 /* =========================
-   RESULT
+   SHOW RESULT
 ========================= */
 
 function showResult(item){
@@ -996,8 +1119,7 @@ function showResult(item){
 
     document.getElementById("resultRarity")
         .textContent =
-        "KNIFE · 100% DEMO";
-
+        "KNIFE · DEMO";
 
     document.getElementById("result")
         .style.display =
@@ -1014,28 +1136,12 @@ function showResult(item){
         document.getElementById(
             "tutorialMessage"
         ).textContent =
-            "✅ Tutorial dokončen! Ostatní demo cases jsou nyní odemčené.";
+            "✅ Tutorial dokončen! Ostatní demo cases jsou odemčené.";
 
         renderCases();
-
     }
 
     renderInventory();
-
-}
-
-
-/* =========================
-   CLOSE MODAL
-========================= */
-
-function closeCase(){
-
-    if(opening)
-        return;
-
-    document.getElementById("caseModal")
-        .classList.remove("active");
 
 }
 
@@ -1081,7 +1187,7 @@ function renderInventory(){
     list.innerHTML = "";
 
 
-    inventory.forEach(item=>{
+    inventory.forEach((item,index)=>{
 
         list.innerHTML += `
 
@@ -1095,12 +1201,25 @@ function renderInventory(){
                     ${item[0]}
                 </div>
 
-                <div class="item-rarity gold">
+                <div
+                    class="item-rarity
+                    ${item[2]}">
                     KNIFE
                 </div>
 
-            </div>
+                <div class="item-price">
+                    Demo value:
+                    $${item[3].toFixed(2)}
+                </div>
 
+                <button
+                    class="sell"
+                    onclick="sellItem(${index})">
+                    SELL FOR
+                    $${item[3].toFixed(2)}
+                </button>
+
+            </div>
         `;
 
     });
@@ -1109,23 +1228,148 @@ function renderInventory(){
 
 
 /* =========================
-   STEAM DEMO
+   SELL ITEM
 ========================= */
 
-function steamDemo(){
+function sellItem(index){
+
+    const item =
+        inventory[index];
+
+    if(!item)
+        return;
+
+
+    const value =
+        item[3];
+
+
+    inventory.splice(index,1);
+
+    balance += value;
+
+    updateBalance();
+    renderInventory();
+
 
     alert(
-        "STEAM DEMO\n\n" +
-        "Steam není skutečně připojený.\n" +
-        "Tato verze nepoužívá Steam login, " +
-        "platby ani převod skinů."
+        item[0] +
+        "\n\nSold for $" +
+        value.toFixed(2) +
+        " demo credits."
     );
 
 }
 
 
 /* =========================
-   START
+   STEAM DEMO CONNECTION
+========================= */
+
+function connectSteam(){
+
+    if(steamConnected){
+
+        steamConnected = false;
+
+        document.getElementById(
+            "steamButton"
+        ).textContent =
+            "Connect Steam";
+
+        document.getElementById(
+            "steamButton"
+        ).classList.remove(
+            "connected"
+        );
+
+        document.getElementById(
+            "steamStatus"
+        ).textContent =
+            "NOT CONNECTED";
+
+        document.getElementById(
+            "steamStatus"
+        ).classList.remove(
+            "connected"
+        );
+
+        document.getElementById(
+            "steamText"
+        ).textContent =
+            "Steam není připojen. Toto je pouze demo.";
+
+        document.getElementById(
+            "avatar"
+        ).textContent = "R";
+
+        return;
+    }
+
+
+    /*
+       Bez skutečného Steam OAuth.
+       Pouze lokální demo připojení.
+    */
+
+    steamConnected = true;
+
+
+    document.getElementById(
+        "steamButton"
+    ).textContent =
+        "Steam Connected ✓";
+
+    document.getElementById(
+        "steamButton"
+    ).classList.add(
+        "connected"
+    );
+
+    document.getElementById(
+        "steamStatus"
+    ).textContent =
+        "CONNECTED · DEMO";
+
+    document.getElementById(
+        "steamStatus"
+    ).classList.add(
+        "connected"
+    );
+
+    document.getElementById(
+        "steamText"
+    ).textContent =
+        "DemoSteamUser · Demo account";
+
+    document.getElementById(
+        "avatar"
+    ).textContent =
+        "S";
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeCase(){
+
+    if(opening)
+        return;
+
+    document.getElementById(
+        "caseModal"
+    ).classList.remove(
+        "active"
+    );
+
+}
+
+
+/* =========================
+   INIT
 ========================= */
 
 renderCases();
