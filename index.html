@@ -3,590 +3,344 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RÆVEN — CS2 Case Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RÆVEN — Collectibles Demo</title>
 
 <style>
-:root{
-    --bg:#07090d;
-    --panel:#0f1319;
-    --panel2:#151a22;
-    --border:#292f39;
-    --red:#e52d38;
-    --red2:#ff4651;
-    --text:#f5f6f8;
-    --muted:#78818e;
-    --yellow:#ffd34e;
-    --green:#4ee28b;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
+body {
     background:
-        radial-gradient(
-            circle at 50% -15%,
-            rgba(229,45,56,.16),
-            transparent 35%
-        ),
-        var(--bg);
-    color:var(--text);
-    font-family:Arial,Helvetica,sans-serif;
+        radial-gradient(circle at top, #241010 0%, #0d0d0f 42%, #070708 100%);
+    color: white;
+    min-height: 100vh;
 }
 
-/* HEADER */
-
-header{
-    height:68px;
-    padding:0 5%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:#0a0d12;
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    z-index:50;
+header {
+    height: 72px;
+    background: rgba(10,10,12,.94);
+    border-bottom: 1px solid #2d2d32;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
 }
 
-.logo{
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:2px;
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #ff3030;
 }
 
-.logo span{
-    color:var(--red);
+.nav {
+    display: flex;
+    gap: 25px;
+    color: #aaa;
+    font-size: 14px;
 }
 
-nav{
-    display:flex;
-    gap:26px;
+.nav span {
+    cursor: pointer;
+    transition: .2s;
 }
 
-nav a{
-    text-decoration:none;
-    color:#858d99;
-    font-size:14px;
-    font-weight:700;
+.nav span:hover {
+    color: white;
 }
 
-nav a:hover{
-    color:#fff;
+.balance-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.account{
-    display:flex;
-    align-items:center;
-    gap:8px;
+.balance {
+    background: #17171b;
+    border: 1px solid #303036;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.balance{
-    padding:9px 13px;
-    border-radius:6px;
-    border:1px solid var(--border);
-    background:#151a22;
-    color:var(--yellow);
-    font-weight:900;
+.balance span {
+    color: #ff3b3b;
 }
 
-.steam-btn{
-    padding:9px 13px;
-    border-radius:6px;
-    border:1px solid #3b5066;
-    background:#1b2838;
-    color:#dce8f3;
-    font-weight:900;
-    cursor:pointer;
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 35px 20px 70px;
 }
 
-.steam-btn.connected{
-    background:#164d32;
-    border-color:#286e49;
-    color:#8ff0b8;
-}
-
-.avatar{
-    width:36px;
-    height:36px;
-    border-radius:6px;
-    background:#252b34;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-/* HERO */
-
-.hero{
-    width:90%;
-    max-width:1200px;
-    min-height:290px;
-    margin:30px auto;
-    border:1px solid var(--border);
-    border-radius:12px;
-    overflow:hidden;
-    position:relative;
+.hero {
     background:
-        radial-gradient(
-            circle at 75% 50%,
-            rgba(229,45,56,.25),
-            transparent 34%
-        ),
-        linear-gradient(
-            120deg,
-            #13171e,
-            #0c0f14
-        );
+        linear-gradient(120deg, rgba(255,35,35,.16), rgba(255,255,255,.02)),
+        #111114;
+    border: 1px solid #29292e;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 25px;
 }
 
-.hero-content{
-    padding:55px;
-    position:relative;
-    z-index:2;
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
 }
 
-.badge{
-    display:inline-block;
-    padding:7px 10px;
-    border-radius:5px;
-    background:rgba(229,45,56,.12);
-    border:1px solid rgba(229,45,56,.35);
-    color:#ff6570;
-    font-size:11px;
-    font-weight:900;
-    margin-bottom:14px;
+.hero p {
+    color: #999;
 }
 
-.hero h1{
-    font-size:44px;
-    max-width:720px;
+.money-panel {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.hero h1 span{
-    color:var(--red);
+.money-btn {
+    border: 1px solid #3a3a40;
+    background: #19191e;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
 }
 
-.hero p{
-    max-width:580px;
-    margin-top:14px;
-    color:#969da8;
-    line-height:1.6;
+.money-btn:hover {
+    background: #ff3030;
+    border-color: #ff3030;
+    transform: translateY(-2px);
 }
 
-.hero-art{
-    position:absolute;
-    right:8%;
-    bottom:-20px;
-    font-size:190px;
-    opacity:.17;
-    transform:rotate(-10deg);
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0 15px;
 }
 
-/* STEAM PANEL */
-
-.steam-panel{
-    width:90%;
-    max-width:1200px;
-    margin:0 auto 25px;
-    padding:17px;
-    border:1px solid var(--border);
-    background:var(--panel);
-    border-radius:9px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.section-title h2 {
+    font-size: 22px;
 }
 
-.steam-info strong{
-    display:block;
-    margin-bottom:5px;
+.section-title small {
+    color: #777;
 }
 
-.steam-info span{
-    color:var(--muted);
-    font-size:12px;
+.cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
 }
 
-.steam-status{
-    color:#ff6871;
-    font-size:12px;
-    font-weight:900;
+.case {
+    background: #111114;
+    border: 1px solid #29292e;
+    border-radius: 15px;
+    padding: 18px;
+    transition: .25s;
 }
 
-.steam-status.connected{
-    color:var(--green);
+.case:hover {
+    transform: translateY(-4px);
+    border-color: #ff3030;
+    box-shadow: 0 10px 35px rgba(255,30,30,.12);
 }
 
-/* TUTORIAL */
-
-.tutorial{
-    width:90%;
-    max-width:700px;
-    margin:0 auto 30px;
-    padding:14px;
-    text-align:center;
-    border-radius:8px;
-    background:rgba(229,45,56,.08);
-    border:1px solid rgba(229,45,56,.25);
-    color:#d9dce1;
-    font-size:13px;
+.case-icon {
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 62px;
+    background: #17171b;
+    border-radius: 11px;
+    margin-bottom: 14px;
 }
 
-/* SECTIONS */
-
-.section{
-    width:90%;
-    max-width:1200px;
-    margin:40px auto;
+.case h3 {
+    margin-bottom: 5px;
 }
 
-.section-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:18px;
+.case p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 14px;
 }
 
-.section-title h2{
-    font-size:22px;
+.open-btn {
+    width: 100%;
+    padding: 11px;
+    border: 0;
+    border-radius: 8px;
+    background: #ff3030;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.section-title span{
-    color:var(--muted);
-    font-size:12px;
+.open-btn:hover {
+    background: #ff4949;
 }
 
-/* CASES */
-
-.cases{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(215px,1fr));
-    gap:15px;
+.open-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
 }
 
-.case{
-    background:
-        linear-gradient(
-            145deg,
-            #151a22,
-            #0e1117
-        );
-    border:1px solid var(--border);
-    border-radius:9px;
-    padding:18px;
-    transition:.2s;
+.inventory {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
 }
 
-.case:hover{
-    transform:translateY(-4px);
-    border-color:#63282d;
+.item {
+    background: #111114;
+    border: 1px solid #29292e;
+    border-radius: 14px;
+    padding: 16px;
 }
 
-.case.locked{
-    opacity:.42;
-    filter:grayscale(.6);
+.item-icon {
+    height: 110px;
+    background: #18181d;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 52px;
+    margin-bottom: 12px;
 }
 
-.case-art{
-    height:145px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.item-name {
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
-.case-icon{
-    font-size:80px;
-    filter:drop-shadow(
-        0 15px 20px rgba(0,0,0,.55)
-    );
+.item-price {
+    color: #ff4545;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-.case-name{
-    font-size:16px;
-    font-weight:900;
+.sell-btn {
+    width: 100%;
+    border: 1px solid #3c3c42;
+    background: #1b1b20;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.case-description{
-    color:#737c88;
-    font-size:11px;
-    margin-top:6px;
+.sell-btn:hover {
+    background: #ff3030;
+    border-color: #ff3030;
 }
 
-.case-bottom{
-    margin-top:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.empty {
+    color: #666;
+    padding: 25px;
+    text-align: center;
+    border: 1px dashed #303036;
+    border-radius: 12px;
+    grid-column: 1 / -1;
 }
 
-.price{
-    color:var(--yellow);
-    font-weight:900;
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.78);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
 }
 
-.open{
-    border:0;
-    background:var(--red);
-    color:#fff;
-    padding:9px 14px;
-    border-radius:6px;
-    font-weight:900;
-    cursor:pointer;
+.modal.active {
+    display: flex;
 }
 
-.open:hover{
-    background:var(--red2);
+.modal-box {
+    width: min(700px, 92%);
+    background: #111114;
+    border: 1px solid #33333a;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
 }
 
-.open:disabled{
-    background:#343a43;
-    cursor:not-allowed;
+.modal-box h2 {
+    margin-bottom: 8px;
 }
 
-/* INVENTORY */
-
-.inventory{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fill,minmax(190px,1fr));
-    gap:13px;
+.modal-box p {
+    color: #888;
+    margin-bottom: 20px;
 }
 
-.item{
-    position:relative;
-    background:#10141a;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:17px;
-    text-align:center;
+.roulette {
+    height: 150px;
+    background: #18181d;
+    border: 1px solid #303036;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 72px;
+    margin: 20px 0;
 }
 
-.item-icon{
-    font-size:60px;
-    margin-bottom:10px;
+.result {
+    display: none;
+    background: #18181d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
 }
 
-.item-name{
-    min-height:30px;
-    font-size:12px;
-    font-weight:900;
+.result.show {
+    display: block;
 }
 
-.item-rarity{
-    margin-top:8px;
-    font-size:10px;
-    font-weight:900;
+.result-icon {
+    font-size: 70px;
+    margin-bottom: 10px;
 }
 
-.item-price{
-    margin-top:7px;
-    color:var(--yellow);
-    font-size:11px;
-    font-weight:900;
+.close-btn {
+    border: 0;
+    background: #333339;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.sell{
-    width:100%;
-    margin-top:12px;
-    border:1px solid #3c464f;
-    background:#171d24;
-    color:#fff;
-    border-radius:6px;
-    padding:8px;
-    font-weight:900;
-    cursor:pointer;
+.close-btn:hover {
+    background: #44444b;
 }
 
-.sell:hover{
-    background:#202831;
-    border-color:#66717d;
-}
-
-.empty{
-    grid-column:1/-1;
-    text-align:center;
-    padding:32px;
-    border:1px dashed #2a3039;
-    border-radius:8px;
-    color:#59616d;
-}
-
-/* MODAL */
-
-.modal{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
-    background:rgba(0,0,0,.92);
-    z-index:100;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:850px;
-    background:#0d1117;
-    border:1px solid #303741;
-    border-radius:10px;
-    padding:25px;
-}
-
-.modal-title{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.roulette{
-    height:150px;
-    overflow:hidden;
-    position:relative;
-    background:#07090d;
-    border:1px solid #292f38;
-    border-radius:7px;
-}
-
-.pointer{
-    position:absolute;
-    left:50%;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:#ff303a;
-    z-index:5;
-    box-shadow:0 0 15px #ff303a;
-}
-
-.track{
-    position:absolute;
-    left:0;
-    top:18px;
-    display:flex;
-    gap:9px;
-}
-
-.roll{
-    flex:0 0 126px;
-    height:112px;
-    background:#11161d;
-    border:1px solid #292f39;
-    border-radius:6px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-.roll-icon{
-    font-size:43px;
-}
-
-.roll-name{
-    font-size:9px;
-    text-align:center;
-    margin-top:7px;
-    padding:0 5px;
-}
-
-.blue{color:#5ba9ff}
-.purple{color:#a970ff}
-.pink{color:#ed5aae}
-.red{color:#ef414a}
-.gold{color:#ffd34e}
-
-.odds{
-    text-align:center;
-    color:#68717d;
-    font-size:10px;
-    margin:13px 0;
-}
-
-.result{
-    display:none;
-    text-align:center;
-}
-
-.result-icon{
-    font-size:90px;
-}
-
-.result-name{
-    font-size:23px;
-    font-weight:900;
-    margin-top:6px;
-}
-
-.result-rarity{
-    margin-top:8px;
-    font-size:11px;
-    font-weight:900;
-}
-
-.close{
-    display:block;
-    margin:20px auto 0;
-    background:#1d232c;
-    border:1px solid #343b46;
-    color:#fff;
-    padding:9px 25px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-footer{
-    border-top:1px solid #1d2229;
-    text-align:center;
-    padding:30px;
-    margin-top:70px;
-    color:#4f5762;
-    font-size:10px;
-}
-
-@media(max-width:700px){
-
-    nav{
-        display:none;
-    }
-
-    .hero-content{
-        padding:35px 25px;
-    }
-
-    .hero h1{
-        font-size:34px;
-    }
-
-    .hero-art{
-        font-size:120px;
-        right:-20px;
-    }
-
-    .balance{
-        display:none;
-    }
-
-    .steam-panel{
-        flex-direction:column;
-        gap:12px;
-        align-items:flex-start;
-    }
+.notice {
+    margin-top: 18px;
+    color: #666;
+    font-size: 12px;
 }
 </style>
 </head>
@@ -594,787 +348,316 @@ footer{
 <body>
 
 <header>
+    <div class="logo">RÆVEN</div>
 
-    <div class="logo">
-        RÆ<span>VEN</span>
+    <div class="nav">
+        <span onclick="scrollToSection('cases')">CASES</span>
+        <span onclick="scrollToSection('inventory')">INVENTORY</span>
     </div>
 
-    <nav>
-        <a href="#cases">Cases</a>
-        <a href="#inventory">Inventory</a>
-    </nav>
-
-    <div class="account">
-
+    <div class="balance-box">
         <div class="balance">
-            $<span id="balance">0.00</span>
+            BALANCE: <span id="balance">$0.00</span>
         </div>
-
-        <button
-            class="steam-btn"
-            id="steamButton"
-            onclick="connectSteam()">
-            Connect Steam
-        </button>
-
-        <div class="avatar" id="avatar">
-            R
-        </div>
-
     </div>
-
 </header>
 
+<main>
 
-<section class="hero">
+    <section class="hero">
+        <h1>RÆVEN COLLECTIBLES</h1>
+        <p>Demo collectible system — everything here uses virtual credits.</p>
 
-    <div class="hero-content">
-
-        <div class="badge">
-            FREE TUTORIAL
+        <div class="money-panel">
+            <button class="money-btn" onclick="addMoney(5)">+ $5</button>
+            <button class="money-btn" onclick="addMoney(10)">+ $10</button>
+            <button class="money-btn" onclick="addMoney(50)">+ $50</button>
+            <button class="money-btn" onclick="addMoney(100)">+ $100</button>
         </div>
 
-        <h1>
-            WELCOME TO
-            <span>RÆVEN CASES</span>
-        </h1>
+        <div class="notice">
+            Demo credits only. No real money is used.
+        </div>
+    </section>
 
-        <p>
-            Začni s $0. První tutorial case je zdarma.
-            Po jeho otevření se odemknou ostatní
-            demo cases.
-        </p>
+    <section id="cases">
 
-    </div>
+        <div class="section-title">
+            <h2>COLLECTIBLE BOXES</h2>
+            <small>Virtual demo</small>
+        </div>
 
-    <div class="hero-art">
-        🔪
-    </div>
+        <div class="cases">
 
-</section>
+            <div class="case">
+                <div class="case-icon">📦</div>
+                <h3>Raven Box</h3>
+                <p>Basic collectible box.</p>
+                <button class="open-btn" onclick="openCase(3)">OPEN — $3</button>
+            </div>
 
+            <div class="case">
+                <div class="case-icon">🎁</div>
+                <h3>Red Box</h3>
+                <p>Contains premium collectibles.</p>
+                <button class="open-btn" onclick="openCase(7)">OPEN — $7</button>
+            </div>
 
-<div class="steam-panel">
+            <div class="case">
+                <div class="case-icon">💎</div>
+                <h3>Elite Box</h3>
+                <p>High-value cosmetic collectibles.</p>
+                <button class="open-btn" onclick="openCase(15)">OPEN — $15</button>
+            </div>
 
-    <div class="steam-info">
+        </div>
+    </section>
 
-        <strong>
-            Steam account
-        </strong>
+    <section id="inventory">
 
-        <span id="steamText">
-            Steam není připojen.
-            Toto je pouze demo.
-        </span>
+        <div class="section-title">
+            <h2>INVENTORY</h2>
+            <small id="inventoryCount">0 items</small>
+        </div>
 
-    </div>
+        <div class="inventory" id="inventoryList">
+            <div class="empty">
+                Inventory je prázdný.
+            </div>
+        </div>
 
-    <div
-        class="steam-status"
-        id="steamStatus">
-        NOT CONNECTED
-    </div>
+    </section>
 
-</div>
+</main>
 
-
-<div class="tutorial" id="tutorialMessage">
-    🔪 První tutorial case má v této demo verzi 100% šanci na knife.
-</div>
-
-
-<section class="section" id="cases">
-
-    <div class="section-title">
-
-        <h2>Cases</h2>
-
-        <span>
-            Virtual demo
-        </span>
-
-    </div>
-
-    <div
-        class="cases"
-        id="caseList">
-    </div>
-
-</section>
-
-
-<section class="section" id="inventory">
-
-    <div class="section-title">
-
-        <h2>Your Inventory</h2>
-
-        <span id="inventoryCount">
-            0 items
-        </span>
-
-    </div>
-
-    <div
-        class="inventory"
-        id="inventoryList">
-    </div>
-
-</section>
-
-
-<footer>
-    RÆVEN CASES — SAFE DEMO · NO REAL MONEY · NO REAL STEAM TRADING
-</footer>
-
-
-<!-- OPEN CASE MODAL -->
-
-<div
-    class="modal"
-    id="caseModal">
+<div class="modal" id="modal">
 
     <div class="modal-box">
 
-        <div class="modal-title">
+        <h2>OPENING BOX</h2>
+        <p>Generating your collectible...</p>
 
-            <h2 id="openingTitle">
-                Opening...
+        <div class="roulette" id="roulette">
+            📦
+        </div>
+
+        <div class="result" id="result">
+
+            <div class="result-icon" id="resultIcon">
+                ⭐
+            </div>
+
+            <h2 id="resultName">
+                Collectible
             </h2>
 
-        </div>
+            <p id="resultPrice">
+                Value: $0.00
+            </p>
 
-        <div class="roulette">
-
-            <div class="pointer"></div>
-
-            <div
-                class="track"
-                id="track">
-            </div>
+            <button class="close-btn" onclick="closeModal()">
+                CLOSE
+            </button>
 
         </div>
-
-        <div class="odds">
-            DEMO MODE · 100% KNIFE
-        </div>
-
-        <div
-            class="result"
-            id="result">
-
-            <div
-                class="result-icon"
-                id="resultIcon">
-            </div>
-
-            <div
-                class="result-name"
-                id="resultName">
-            </div>
-
-            <div
-                class="result-rarity gold"
-                id="resultRarity">
-            </div>
-
-        </div>
-
-        <button
-            class="close"
-            onclick="closeCase()">
-            Close
-        </button>
 
     </div>
 
 </div>
 
-
 <script>
-
-/* =========================
-   STATE
-========================= */
 
 let balance = 0;
 let inventory = [];
-let tutorialDone = false;
-let opening = false;
-let steamConnected = false;
 
-
-/* =========================
-   CASE DATA
-========================= */
-
-const cases = [
-
+const collectibles = [
     {
-        name:"FREE KNIFE CASE",
-        price:0,
-        icon:"🎁",
-        description:"Tutorial case — 100% knife.",
-        tutorial:true,
-
-        items:[
-            ["★ Karambit | Demo Doppler","🔪","gold",50],
-            ["★ Butterfly Knife | Demo","🔪","gold",45],
-            ["★ M9 Bayonet | Demo","🔪","gold",40],
-            ["★ Talon Knife | Demo","🔪","gold",35]
-        ]
+        name: "Raven Sticker",
+        icon: "🦅",
+        price: 2
     },
-
     {
-        name:"RÆVEN RED",
-        price:5,
-        icon:"🔥",
-        description:"Red themed demo case.",
-        tutorial:false,
-
-        items:[
-            ["★ Karambit | Demo Doppler","🔪","gold",50],
-            ["★ Butterfly Knife | Demo","🔪","gold",45],
-            ["AK-47 | Slate","🔫","purple",12],
-            ["AWP | Neo-Noir","🔫","pink",18]
-        ]
+        name: "Red Raven Patch",
+        icon: "🔴",
+        price: 4
     },
-
     {
-        name:"RÆVEN BLACK",
-        price:15,
-        icon:"🖤",
-        description:"Dark themed demo case.",
-        tutorial:false,
-
-        items:[
-            ["★ M9 Bayonet | Demo","🔪","gold",60],
-            ["★ Talon Knife | Demo","🔪","gold",55],
-            ["M4A1-S | Printstream","🔫","red",28],
-            ["AK-47 | Neon Rider","🔫","purple",20]
-        ]
+        name: "RÆVEN Charm",
+        icon: "🐦‍⬛",
+        price: 6
     },
-
     {
-        name:"RÆVEN ELITE",
-        price:30,
-        icon:"👑",
-        description:"Elite demo collection.",
-        tutorial:false,
-
-        items:[
-            ["★ Butterfly Knife | Demo","🔪","gold",100],
-            ["★ Karambit | Demo Doppler","🔪","gold",95],
-            ["★ M9 Bayonet | Demo","🔪","gold",85],
-            ["AWP | Containment Breach","🔫","pink",35]
-        ]
+        name: "Pixel Badge",
+        icon: "🟪",
+        price: 8
+    },
+    {
+        name: "Elite Raven Badge",
+        icon: "💎",
+        price: 15
+    },
+    {
+        name: "Golden Raven Card",
+        icon: "🏆",
+        price: 25
     }
-
 ];
 
-
-/* =========================
-   RANDOM KNIFE
-========================= */
-
-function randomKnife(items){
-
-    const knives =
-        items.filter(item =>
-            item[2] === "gold"
-        );
-
-    return knives[
-        Math.floor(
-            Math.random() * knives.length
-        )
-    ];
+function updateBalance() {
+    document.getElementById("balance").textContent =
+        "$" + balance.toFixed(2);
 }
 
-
-/* =========================
-   RENDER CASES
-========================= */
-
-function renderCases(){
-
-    const list =
-        document.getElementById("caseList");
-
-    list.innerHTML = "";
-
-    cases.forEach((c,index)=>{
-
-        const locked =
-            !c.tutorial &&
-            !tutorialDone;
-
-        list.innerHTML += `
-
-            <div
-                class="case
-                ${locked ? "locked" : ""}">
-
-                <div class="case-art">
-                    <div class="case-icon">
-                        ${c.icon}
-                    </div>
-                </div>
-
-                <div class="case-name">
-                    ${c.name}
-                </div>
-
-                <div class="case-description">
-                    ${c.description}
-                </div>
-
-                <div class="case-bottom">
-
-                    <div class="price">
-                        ${
-                            c.price === 0
-                            ? "FREE"
-                            : "$" + c.price.toFixed(2)
-                        }
-                    </div>
-
-                    <button
-                        class="open"
-                        onclick="openCase(${index})"
-                        ${locked ? "disabled" : ""}>
-                        ${locked ? "LOCKED" : "OPEN"}
-                    </button>
-
-                </div>
-
-            </div>
-        `;
-
-    });
-
+function addMoney(amount) {
+    balance += amount;
+    updateBalance();
 }
 
+function openCase(cost) {
 
-/* =========================
-   BALANCE
-========================= */
-
-function updateBalance(){
-
-    document.getElementById("balance")
-        .textContent =
-        balance.toFixed(2);
-
-}
-
-
-/* =========================
-   OPEN CASE
-========================= */
-
-function openCase(index){
-
-    if(opening)
-        return;
-
-    const c = cases[index];
-
-    if(!c.tutorial && !tutorialDone){
-
-        alert(
-            "Nejdřív otevři FREE KNIFE CASE."
-        );
-
+    if (balance < cost) {
+        alert("Nemáš dostatek demo credits.");
         return;
     }
 
-    if(c.price > balance){
-
-        alert(
-            "Nemáš dostatek demo credits."
-        );
-
-        return;
-    }
-
-    opening = true;
-
-    balance -= c.price;
-
+    balance -= cost;
     updateBalance();
 
-    const modal =
-        document.getElementById("caseModal");
+    const modal = document.getElementById("modal");
+    const roulette = document.getElementById("roulette");
+    const result = document.getElementById("result");
 
-    const track =
-        document.getElementById("track");
-
-    const result =
-        document.getElementById("result");
-
+    result.classList.remove("show");
     modal.classList.add("active");
 
-    result.style.display = "none";
+    let counter = 0;
 
-    document.getElementById("openingTitle")
-        .textContent =
-        "Opening " + c.name + "...";
+    const animation = setInterval(() => {
 
-    track.style.transition = "none";
-    track.style.transform = "translateX(0px)";
-    track.innerHTML = "";
+        const random =
+            collectibles[
+                Math.floor(Math.random() * collectibles.length)
+            ];
 
+        roulette.textContent = random.icon;
 
-    /*
-       DEMO:
-       Každé otevření vybere
-       náhodný knife.
-    */
+        counter++;
 
-    const winner =
-        randomKnife(c.items);
+        if (counter >= 18) {
 
+            clearInterval(animation);
 
-    const visual = [];
+            const item =
+                collectibles[
+                    Math.floor(Math.random() * collectibles.length)
+                ];
 
-    for(let i=0;i<45;i++){
+            inventory.push({
+                ...item,
+                id: Date.now() + Math.random()
+            });
 
-        visual.push(
-            c.items[
-                Math.floor(
-                    Math.random() *
-                    c.items.length
-                )
-            ]
-        );
+            roulette.textContent = item.icon;
 
-    }
+            document.getElementById("resultIcon").textContent =
+                item.icon;
 
-    visual[40] = winner;
+            document.getElementById("resultName").textContent =
+                item.name;
 
+            document.getElementById("resultPrice").textContent =
+                "Value: $" + item.price.toFixed(2);
 
-    visual.forEach(item=>{
+            result.classList.add("show");
 
-        track.innerHTML += `
+            renderInventory();
+        }
 
-            <div class="roll">
-
-                <div class="roll-icon">
-                    ${item[1]}
-                </div>
-
-                <div
-                    class="roll-name
-                    ${item[2]}">
-                    ${item[0]}
-                </div>
-
-            </div>
-        `;
-
-    });
-
-
-    setTimeout(()=>{
-
-        const tileWidth = 135;
-
-        const target =
-            tileWidth * 40 - 337;
-
-        track.style.transition =
-            "transform 5s cubic-bezier(.08,.75,.12,1)";
-
-        track.style.transform =
-            `translateX(-${target}px)`;
-
-    },100);
-
-
-    setTimeout(()=>{
-
-        showResult(winner);
-
-        opening = false;
-
-    },5350);
-
+    }, 90);
 }
 
+function renderInventory() {
 
-/* =========================
-   SHOW RESULT
-========================= */
-
-function showResult(item){
-
-    document.getElementById("resultIcon")
-        .textContent =
-        item[1];
-
-    document.getElementById("resultName")
-        .textContent =
-        item[0];
-
-    document.getElementById("resultRarity")
-        .textContent =
-        "KNIFE · DEMO";
-
-    document.getElementById("result")
-        .style.display =
-        "block";
-
-
-    inventory.unshift(item);
-
-
-    if(!tutorialDone){
-
-        tutorialDone = true;
-
-        document.getElementById(
-            "tutorialMessage"
-        ).textContent =
-            "✅ Tutorial dokončen! Ostatní demo cases jsou odemčené.";
-
-        renderCases();
-    }
-
-    renderInventory();
-
-}
-
-
-/* =========================
-   INVENTORY
-========================= */
-
-function renderInventory(){
-
-    const list =
-        document.getElementById(
-            "inventoryList"
-        );
-
-    const count =
-        document.getElementById(
-            "inventoryCount"
-        );
-
+    const list = document.getElementById("inventoryList");
+    const count = document.getElementById("inventoryCount");
 
     count.textContent =
         inventory.length +
-        (
-            inventory.length === 1
-            ? " item"
-            : " items"
-        );
+        (inventory.length === 1 ? " item" : " items");
 
-
-    if(inventory.length === 0){
+    if (inventory.length === 0) {
 
         list.innerHTML = `
             <div class="empty">
-                Your inventory is empty.
+                Inventory je prázdný.
             </div>
         `;
 
         return;
     }
-
 
     list.innerHTML = "";
 
+    inventory.forEach((item, index) => {
 
-    inventory.forEach((item,index)=>{
+        const div = document.createElement("div");
 
-        list.innerHTML += `
+        div.className = "item";
 
-            <div class="item">
+        div.innerHTML = `
+            <div class="item-icon">${item.icon}</div>
 
-                <div class="item-icon">
-                    ${item[1]}
-                </div>
-
-                <div class="item-name">
-                    ${item[0]}
-                </div>
-
-                <div
-                    class="item-rarity
-                    ${item[2]}">
-                    KNIFE
-                </div>
-
-                <div class="item-price">
-                    Demo value:
-                    $${item[3].toFixed(2)}
-                </div>
-
-                <button
-                    class="sell"
-                    onclick="sellItem(${index})">
-                    SELL FOR
-                    $${item[3].toFixed(2)}
-                </button>
-
+            <div class="item-name">
+                ${item.name}
             </div>
+
+            <div class="item-price">
+                $${item.price.toFixed(2)}
+            </div>
+
+            <button
+                class="sell-btn"
+                onclick="sellItem(${index})"
+            >
+                SELL FOR $${item.price.toFixed(2)}
+            </button>
         `;
 
+        list.appendChild(div);
     });
-
 }
 
+function sellItem(index) {
 
-/* =========================
-   SELL ITEM
-========================= */
+    const item = inventory[index];
 
-function sellItem(index){
+    if (!item) return;
 
-    const item =
-        inventory[index];
+    balance += item.price;
 
-    if(!item)
-        return;
-
-
-    const value =
-        item[3];
-
-
-    inventory.splice(index,1);
-
-    balance += value;
+    inventory.splice(index, 1);
 
     updateBalance();
     renderInventory();
-
-
-    alert(
-        item[0] +
-        "\n\nSold for $" +
-        value.toFixed(2) +
-        " demo credits."
-    );
-
 }
 
+function closeModal() {
+    document.getElementById("modal").classList.remove("active");
+}
 
-/* =========================
-   STEAM DEMO CONNECTION
-========================= */
+function scrollToSection(id) {
 
-function connectSteam(){
+    const element = document.getElementById(id);
 
-    if(steamConnected){
-
-        steamConnected = false;
-
-        document.getElementById(
-            "steamButton"
-        ).textContent =
-            "Connect Steam";
-
-        document.getElementById(
-            "steamButton"
-        ).classList.remove(
-            "connected"
-        );
-
-        document.getElementById(
-            "steamStatus"
-        ).textContent =
-            "NOT CONNECTED";
-
-        document.getElementById(
-            "steamStatus"
-        ).classList.remove(
-            "connected"
-        );
-
-        document.getElementById(
-            "steamText"
-        ).textContent =
-            "Steam není připojen. Toto je pouze demo.";
-
-        document.getElementById(
-            "avatar"
-        ).textContent = "R";
-
-        return;
+    if (element) {
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
     }
-
-
-    /*
-       Bez skutečného Steam OAuth.
-       Pouze lokální demo připojení.
-    */
-
-    steamConnected = true;
-
-
-    document.getElementById(
-        "steamButton"
-    ).textContent =
-        "Steam Connected ✓";
-
-    document.getElementById(
-        "steamButton"
-    ).classList.add(
-        "connected"
-    );
-
-    document.getElementById(
-        "steamStatus"
-    ).textContent =
-        "CONNECTED · DEMO";
-
-    document.getElementById(
-        "steamStatus"
-    ).classList.add(
-        "connected"
-    );
-
-    document.getElementById(
-        "steamText"
-    ).textContent =
-        "DemoSteamUser · Demo account";
-
-    document.getElementById(
-        "avatar"
-    ).textContent =
-        "S";
-
 }
 
-
-/* =========================
-   CLOSE MODAL
-========================= */
-
-function closeCase(){
-
-    if(opening)
-        return;
-
-    document.getElementById(
-        "caseModal"
-    ).classList.remove(
-        "active"
-    );
-
-}
-
-
-/* =========================
-   INIT
-========================= */
-
-renderCases();
-renderInventory();
 updateBalance();
+renderInventory();
 
 </script>
 
