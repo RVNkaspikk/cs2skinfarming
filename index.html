@@ -3,22 +3,10 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RÆVEN — CS2 Case Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RÆVEN — Case Demo</title>
 
 <style>
-:root{
-    --bg:#080a0e;
-    --panel:#10141b;
-    --panel2:#151a22;
-    --border:#292f3a;
-    --text:#f4f5f7;
-    --muted:#818997;
-    --red:#e52d38;
-    --red2:#ff4651;
-    --yellow:#ffd34e;
-}
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -26,48 +14,42 @@
 }
 
 body{
-    background:
-        radial-gradient(circle at 50% -15%,rgba(229,45,56,.17),transparent 35%),
-        #080a0e;
-    color:var(--text);
+    background:#080a0e;
+    color:#fff;
     font-family:Arial,Helvetica,sans-serif;
-    min-height:100vh;
 }
-
-/* HEADER */
 
 header{
     height:68px;
-    background:#0b0e13;
-    border-bottom:1px solid var(--border);
+    background:#0c0f14;
+    border-bottom:1px solid #272c35;
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 5%;
     position:sticky;
     top:0;
-    z-index:50;
+    z-index:20;
 }
 
 .logo{
-    font-size:24px;
+    font-size:25px;
     font-weight:900;
     letter-spacing:2px;
 }
 
 .logo span{
-    color:var(--red);
+    color:#e52d38;
 }
 
 nav{
     display:flex;
-    gap:28px;
+    gap:25px;
 }
 
 nav a{
-    color:#89919e;
+    color:#858c97;
     text-decoration:none;
-    font-size:14px;
 }
 
 nav a:hover{
@@ -81,29 +63,29 @@ nav a:hover{
 }
 
 .balance{
-    background:#151a22;
-    border:1px solid var(--border);
+    background:#151a21;
+    border:1px solid #2a3039;
     border-radius:6px;
     padding:9px 13px;
-    color:var(--yellow);
+    color:#ffd34e;
     font-weight:900;
 }
 
-.steam-demo{
+.steam{
     background:#1b2838;
-    border:1px solid #34485e;
-    color:#d9e5f0;
-    padding:9px 12px;
+    border:1px solid #40536a;
+    color:#dce8f4;
     border-radius:6px;
+    padding:9px 12px;
+    font-weight:800;
     cursor:pointer;
-    font-weight:700;
 }
 
 .avatar{
-    width:35px;
-    height:35px;
+    width:36px;
+    height:36px;
     border-radius:6px;
-    background:#292f38;
+    background:#252b34;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -115,16 +97,19 @@ nav a:hover{
 .hero{
     width:90%;
     max-width:1200px;
+    min-height:290px;
     margin:30px auto;
-    min-height:280px;
-    border:1px solid var(--border);
+    border:1px solid #292f38;
     border-radius:12px;
     overflow:hidden;
     position:relative;
     background:
-        linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.28)),
-        radial-gradient(circle at 75% 50%,rgba(229,45,56,.28),transparent 35%),
-        #171014;
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(229,45,56,.25),
+            transparent 35%
+        ),
+        #11141a;
 }
 
 .hero-content{
@@ -135,30 +120,30 @@ nav a:hover{
 
 .badge{
     display:inline-block;
-    padding:7px 10px;
+    background:rgba(229,45,56,.12);
+    border:1px solid rgba(229,45,56,.35);
+    color:#ff6570;
     border-radius:5px;
-    background:rgba(229,45,56,.14);
-    border:1px solid rgba(229,45,56,.4);
-    color:#ff6871;
+    padding:7px 10px;
     font-size:11px;
     font-weight:900;
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
 .hero h1{
-    font-size:43px;
-    max-width:650px;
+    font-size:44px;
+    max-width:700px;
 }
 
 .hero h1 span{
-    color:var(--red);
+    color:#e52d38;
 }
 
 .hero p{
-    margin-top:13px;
-    color:#9aa1ad;
-    max-width:560px;
+    color:#969da8;
+    margin-top:14px;
     line-height:1.6;
+    max-width:580px;
 }
 
 .hero-art{
@@ -166,8 +151,23 @@ nav a:hover{
     right:8%;
     bottom:-25px;
     font-size:190px;
-    opacity:.2;
+    opacity:.18;
     transform:rotate(-10deg);
+}
+
+/* TUTORIAL */
+
+.tutorial{
+    width:90%;
+    max-width:700px;
+    margin:0 auto 30px;
+    padding:14px;
+    text-align:center;
+    border-radius:8px;
+    background:rgba(229,45,56,.08);
+    border:1px solid rgba(229,45,56,.25);
+    color:#d7dbe0;
+    font-size:13px;
 }
 
 /* SECTIONS */
@@ -175,14 +175,14 @@ nav a:hover{
 .section{
     width:90%;
     max-width:1200px;
-    margin:38px auto;
+    margin:40px auto;
 }
 
 .section-title{
     display:flex;
     justify-content:space-between;
-    align-items:end;
-    margin-bottom:17px;
+    align-items:center;
+    margin-bottom:18px;
 }
 
 .section-title h2{
@@ -190,7 +190,7 @@ nav a:hover{
 }
 
 .section-title span{
-    color:var(--muted);
+    color:#6f7782;
     font-size:12px;
 }
 
@@ -198,13 +198,18 @@ nav a:hover{
 
 .cases{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+    grid-template-columns:
+        repeat(auto-fit,minmax(215px,1fr));
     gap:15px;
 }
 
 .case{
-    background:linear-gradient(145deg,#151a22,#0e1117);
-    border:1px solid var(--border);
+    background:linear-gradient(
+        145deg,
+        #151a22,
+        #0e1117
+    );
+    border:1px solid #292f38;
     border-radius:9px;
     padding:18px;
     transition:.2s;
@@ -212,12 +217,12 @@ nav a:hover{
 
 .case:hover{
     transform:translateY(-4px);
-    border-color:#63282d;
+    border-color:#662a30;
 }
 
 .case.locked{
-    opacity:.45;
-    filter:grayscale(.5);
+    opacity:.4;
+    filter:grayscale(.6);
 }
 
 .case-art{
@@ -228,8 +233,10 @@ nav a:hover{
 }
 
 .case-icon{
-    font-size:82px;
-    filter:drop-shadow(0 15px 20px rgba(0,0,0,.55));
+    font-size:80px;
+    filter:drop-shadow(
+        0 15px 20px rgba(0,0,0,.6)
+    );
 }
 
 .case-name{
@@ -238,39 +245,39 @@ nav a:hover{
 }
 
 .case-description{
-    color:#747d89;
+    color:#707986;
     font-size:11px;
     margin-top:6px;
 }
 
 .case-bottom{
+    margin-top:15px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    margin-top:14px;
+    align-items:center;
 }
 
-.case-price{
-    color:var(--yellow);
+.price{
+    color:#ffd34e;
     font-weight:900;
 }
 
-.open-btn{
+.open{
     border:0;
-    background:var(--red);
-    color:white;
-    padding:9px 13px;
+    background:#e52d38;
+    color:#fff;
+    padding:9px 14px;
     border-radius:6px;
     font-weight:900;
     cursor:pointer;
 }
 
-.open-btn:hover{
-    background:var(--red2);
+.open:hover{
+    background:#ff4651;
 }
 
-.open-btn:disabled{
-    background:#333841;
+.open:disabled{
+    background:#343a43;
     cursor:not-allowed;
 }
 
@@ -278,20 +285,21 @@ nav a:hover{
 
 .inventory{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    grid-template-columns:
+        repeat(auto-fill,minmax(180px,1fr));
     gap:12px;
 }
 
 .item{
     background:#10141a;
-    border:1px solid var(--border);
-    border-radius:7px;
+    border:1px solid #292f38;
+    border-radius:8px;
     padding:16px;
     text-align:center;
 }
 
 .item-icon{
-    font-size:55px;
+    font-size:60px;
     margin-bottom:10px;
 }
 
@@ -300,25 +308,39 @@ nav a:hover{
     font-weight:900;
 }
 
-.rarity{
-    margin-top:7px;
+.item-rarity{
+    margin-top:8px;
     font-size:10px;
     font-weight:900;
 }
 
-.blue{color:#5aa9ff}
-.purple{color:#a970ff}
-.pink{color:#ed5aae}
-.red{color:#ef4049}
-.gold{color:#ffd34e}
+.gold{
+    color:#ffd34e;
+}
+
+.blue{
+    color:#5ba9ff;
+}
+
+.purple{
+    color:#a970ff;
+}
+
+.pink{
+    color:#ed5aae;
+}
+
+.red{
+    color:#ef414a;
+}
 
 .empty{
     grid-column:1/-1;
     text-align:center;
-    color:#5e6672;
-    border:1px dashed #292f39;
+    padding:30px;
+    border:1px dashed #2a3039;
     border-radius:8px;
-    padding:28px;
+    color:#59616d;
 }
 
 /* MODAL */
@@ -326,7 +348,7 @@ nav a:hover{
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.9);
+    background:rgba(0,0,0,.91);
     display:none;
     align-items:center;
     justify-content:center;
@@ -342,7 +364,7 @@ nav a:hover{
     width:100%;
     max-width:850px;
     background:#0d1117;
-    border:1px solid #2c333e;
+    border:1px solid #303741;
     border-radius:10px;
     padding:25px;
 }
@@ -354,11 +376,11 @@ nav a:hover{
 
 .roulette{
     height:150px;
-    background:#07090d;
-    border:1px solid #292f39;
-    border-radius:7px;
     overflow:hidden;
     position:relative;
+    background:#07090d;
+    border:1px solid #292f38;
+    border-radius:7px;
 }
 
 .pointer{
@@ -369,7 +391,7 @@ nav a:hover{
     width:2px;
     background:#ff303a;
     z-index:5;
-    box-shadow:0 0 14px #ff303a;
+    box-shadow:0 0 15px #ff303a;
 }
 
 .track{
@@ -388,8 +410,8 @@ nav a:hover{
     border-radius:6px;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 }
 
 .roll-icon{
@@ -397,15 +419,15 @@ nav a:hover{
 }
 
 .roll-name{
-    text-align:center;
     font-size:9px;
+    text-align:center;
     margin-top:7px;
     padding:0 5px;
 }
 
 .odds{
     text-align:center;
-    color:#69717d;
+    color:#68717d;
     font-size:10px;
     margin:13px 0;
 }
@@ -416,56 +438,39 @@ nav a:hover{
 }
 
 .result-icon{
-    font-size:85px;
+    font-size:90px;
 }
 
 .result-name{
-    font-size:22px;
+    font-size:23px;
     font-weight:900;
-    margin-top:5px;
+    margin-top:6px;
 }
 
 .result-rarity{
     font-size:11px;
     font-weight:900;
-    margin-top:7px;
+    margin-top:8px;
 }
 
 .close{
     display:block;
     margin:20px auto 0;
     background:#1d232c;
-    color:white;
-    border:1px solid #333a46;
+    border:1px solid #343b46;
+    color:#fff;
+    padding:9px 25px;
     border-radius:6px;
-    padding:9px 24px;
     cursor:pointer;
 }
-
-/* TUTORIAL */
-
-.tutorial{
-    text-align:center;
-    margin:10px auto 25px;
-    width:90%;
-    max-width:700px;
-    background:rgba(229,45,56,.08);
-    border:1px solid rgba(229,45,56,.25);
-    border-radius:8px;
-    padding:13px;
-    color:#d5d8dd;
-    font-size:13px;
-}
-
-/* FOOTER */
 
 footer{
     border-top:1px solid #1d2229;
     text-align:center;
-    padding:28px;
-    color:#4d5561;
+    padding:30px;
+    margin-top:70px;
+    color:#4f5762;
     font-size:10px;
-    margin-top:65px;
 }
 
 @media(max-width:700px){
@@ -483,8 +488,8 @@ footer{
     }
 
     .hero-art{
-        right:-30px;
-        font-size:130px;
+        font-size:120px;
+        right:-20px;
     }
 
     .balance{
@@ -513,11 +518,13 @@ footer{
             $<span id="balance">0.00</span>
         </div>
 
-        <button class="steam-demo" onclick="steamDemo()">
+        <button class="steam" onclick="steamDemo()">
             Steam Demo
         </button>
 
-        <div class="avatar">R</div>
+        <div class="avatar">
+            R
+        </div>
 
     </div>
 
@@ -529,7 +536,7 @@ footer{
     <div class="hero-content">
 
         <div class="badge">
-            TUTORIAL CASE
+            FREE TUTORIAL
         </div>
 
         <h1>
@@ -538,22 +545,22 @@ footer{
         </h1>
 
         <p>
-            Start with $0 and try your first free case.
-            The tutorial must be completed before other
-            demo cases become available.
+            Začni s $0. První tutorial case je zdarma
+            a musíš ho otevřít, aby se odemkly ostatní
+            demo cases.
         </p>
 
     </div>
 
     <div class="hero-art">
-        📦
+        🔪
     </div>
 
 </section>
 
 
 <div class="tutorial" id="tutorialMessage">
-    🎁 Open the FREE TUTORIAL CASE first.
+    🔪 První tutorial case má v této demo verzi 100% šanci na knife.
 </div>
 
 
@@ -564,7 +571,7 @@ footer{
         <h2>Cases</h2>
 
         <span>
-            Virtual demo only
+            SAFE DEMO
         </span>
 
     </div>
@@ -598,11 +605,9 @@ footer{
 
 
 <footer>
-    RÆVEN CASES — SAFE DEMO · NO REAL MONEY · NO STEAM CONNECTION
+    RÆVEN CASES — DEMO ONLY · NO REAL MONEY · NO STEAM TRANSFER
 </footer>
 
-
-<!-- OPENING MODAL -->
 
 <div class="modal" id="caseModal">
 
@@ -623,16 +628,22 @@ footer{
         </div>
 
         <div class="odds">
-            Blue 79% · Purple 17% · Pink 3% · Red 0.9% · Gold 0.1%
+            DEMO MODE · 100% KNIFE
         </div>
 
         <div class="result" id="result">
 
-            <div class="result-icon" id="resultIcon"></div>
+            <div class="result-icon" id="resultIcon">
+                🔪
+            </div>
 
             <div class="result-name" id="resultName"></div>
 
-            <div class="result-rarity" id="resultRarity"></div>
+            <div
+                class="result-rarity gold"
+                id="resultRarity">
+                GOLD
+            </div>
 
         </div>
 
@@ -658,28 +669,23 @@ let opening = false;
 
 
 /* =========================
-   CASE DATA
+   CASES
 ========================= */
 
 const cases = [
 
     {
-        name:"FREE TUTORIAL CASE",
+        name:"FREE KNIFE CASE",
         price:0,
         icon:"🎁",
-        description:"Your first free demo case.",
+        description:"Tutorial case — 100% knife.",
         tutorial:true,
 
         items:[
-            ["MP9 | Storm","🔫","blue"],
-            ["Glock-18 | Winterized","🔫","blue"],
-            ["USP-S | Ticket to Hell","🔫","blue"],
-            ["M4A4 | Magnesium","🔫","blue"],
-            ["AK-47 | Slate","🔫","purple"],
-            ["M4A1-S | Basilisk","🔫","purple"],
-            ["AWP | Atheris","🔫","pink"],
-            ["AK-47 | Legion of Anubis","🔫","red"],
-            ["★ Gut Knife | Safari Mesh","🔪","gold"]
+            ["★ Karambit | Demo Doppler","🔪","gold"],
+            ["★ Butterfly Knife | Demo","🔪","gold"],
+            ["★ M9 Bayonet | Demo","🔪","gold"],
+            ["★ Talon Knife | Demo","🔪","gold"]
         ]
     },
 
@@ -687,19 +693,14 @@ const cases = [
         name:"RÆVEN RED",
         price:5,
         icon:"🔥",
-        description:"Red themed weapon collection.",
+        description:"Red themed demo case.",
         tutorial:false,
 
         items:[
-            ["Glock-18 | Candy Apple","🔫","blue"],
-            ["MP9 | Ruby Poison Dart","🔫","blue"],
-            ["USP-S | Cortex","🔫","blue"],
-            ["FAMAS | Meow 36","🔫","blue"],
+            ["★ Karambit | Demo Doppler","🔪","gold"],
+            ["★ Butterfly Knife | Demo","🔪","gold"],
             ["AK-47 | Slate","🔫","purple"],
-            ["M4A4 | Evil Daimyo","🔫","purple"],
-            ["AWP | Neo-Noir","🔫","pink"],
-            ["AK-47 | The Empress","🔫","red"],
-            ["★ Huntsman Knife","🔪","gold"]
+            ["AWP | Neo-Noir","🔫","pink"]
         ]
     },
 
@@ -707,19 +708,14 @@ const cases = [
         name:"RÆVEN BLACK",
         price:15,
         icon:"🖤",
-        description:"Dark weapon collection.",
+        description:"Dark themed demo case.",
         tutorial:false,
 
         items:[
-            ["P250 | Nevermore","🔫","blue"],
-            ["MP7 | Bloodsport","🔫","blue"],
-            ["USP-S | Black Lotus","🔫","blue"],
-            ["FAMAS | Meow 36","🔫","blue"],
-            ["AK-47 | Slate","🔫","purple"],
-            ["M4A1-S | Leaded Glass","🔫","purple"],
-            ["AWP | Hyper Beast","🔫","pink"],
+            ["★ M9 Bayonet | Demo","🔪","gold"],
+            ["★ Talon Knife | Demo","🔪","gold"],
             ["M4A1-S | Printstream","🔫","red"],
-            ["★ Karambit","🔪","gold"]
+            ["AK-47 | Neon Rider","🔫","purple"]
         ]
     },
 
@@ -727,19 +723,14 @@ const cases = [
         name:"RÆVEN ELITE",
         price:30,
         icon:"👑",
-        description:"High-tier demo collection.",
+        description:"Elite demo collection.",
         tutorial:false,
 
         items:[
-            ["Glock-18 | Vogue","🔫","blue"],
-            ["Desert Eagle | Light Rail","🔫","blue"],
-            ["USP-S | Printstream","🔫","blue"],
-            ["M4A4 | In Living Color","🔫","purple"],
-            ["AK-47 | Neon Rider","🔫","purple"],
-            ["M4A1-S | Player Two","🔫","pink"],
-            ["AWP | Containment Breach","🔫","pink"],
-            ["AK-47 | Fire Serpent","🔫","red"],
-            ["★ Butterfly Knife","🔪","gold"]
+            ["★ Butterfly Knife | Demo","🔪","gold"],
+            ["★ Karambit | Demo Doppler","🔪","gold"],
+            ["★ M9 Bayonet | Demo","🔪","gold"],
+            ["AWP | Containment Breach","🔫","pink"]
         ]
     }
 
@@ -747,55 +738,34 @@ const cases = [
 
 
 /* =========================
-   RANDOM DROP
+   100% KNIFE RANDOMIZER
 ========================= */
 
-function randomRarity(){
+function randomKnife(items){
 
-    const roll = Math.random() * 100;
+    const knives =
+        items.filter(item => item[2] === "gold");
 
-    if(roll < 0.1)
-        return "gold";
+    if(knives.length > 0){
 
-    if(roll < 1)
-        return "red";
-
-    if(roll < 4)
-        return "pink";
-
-    if(roll < 21)
-        return "purple";
-
-    return "blue";
-}
-
-
-function randomItem(items){
-
-    const rarity = randomRarity();
-
-    const possible =
-        items.filter(item => item[2] === rarity);
-
-    if(possible.length){
-
-        return possible[
-            Math.floor(Math.random() * possible.length)
+        return knives[
+            Math.floor(
+                Math.random() * knives.length
+            )
         ];
 
     }
 
-    const fallback =
-        items.filter(item => item[2] === "blue");
-
-    return fallback[
-        Math.floor(Math.random() * fallback.length)
+    return [
+        "★ Demo Knife",
+        "🔪",
+        "gold"
     ];
 }
 
 
 /* =========================
-   CASE LIST
+   RENDER CASES
 ========================= */
 
 function renderCases(){
@@ -830,14 +800,16 @@ function renderCases(){
 
                 <div class="case-bottom">
 
-                    <div class="case-price">
-                        ${c.price === 0
+                    <div class="price">
+                        ${
+                            c.price === 0
                             ? "FREE"
-                            : "$" + c.price.toFixed(2)}
+                            : "$" + c.price.toFixed(2)
+                        }
                     </div>
 
                     <button
-                        class="open-btn"
+                        class="open"
                         onclick="openCase(${index})"
                         ${locked ? "disabled" : ""}
                     >
@@ -847,8 +819,11 @@ function renderCases(){
                 </div>
 
             </div>
+
         `;
+
     });
+
 }
 
 
@@ -859,7 +834,8 @@ function renderCases(){
 function updateBalance(){
 
     document.getElementById("balance")
-        .textContent = balance.toFixed(2);
+        .textContent =
+        balance.toFixed(2);
 
 }
 
@@ -877,14 +853,18 @@ function openCase(index){
 
     if(!c.tutorial && !tutorialDone){
 
-        alert("Open the free tutorial case first.");
+        alert(
+            "Nejdřív otevři FREE KNIFE CASE."
+        );
 
         return;
     }
 
     if(c.price > balance){
 
-        alert("Not enough demo balance.");
+        alert(
+            "Nemáš dostatek demo credits."
+        );
 
         return;
     }
@@ -921,19 +901,17 @@ function openCase(index){
 
 
     /*
-        RANDOM RESULT
-        Generated at the moment
-        the case is opened.
+       VÝSLEDEK JE VYBRÁN
+       NÁHODNĚ V MOMENTĚ OTEVŘENÍ.
+       V TÉTO DEMO VERZI JE VŽDY KNIFE.
     */
 
     const winner =
-        randomItem(c.items);
+        randomKnife(c.items);
 
 
     /*
-        Visual roulette.
-        The selected winner is inserted
-        into the final visual position.
+       Vytvoření animace.
     */
 
     const visual = [];
@@ -1009,38 +987,34 @@ function openCase(index){
 function showResult(item){
 
     document.getElementById("resultIcon")
-        .textContent = item[1];
+        .textContent =
+        item[1];
 
     document.getElementById("resultName")
-        .textContent = item[0];
+        .textContent =
+        item[0];
 
-    const rarity =
-        document.getElementById("resultRarity");
+    document.getElementById("resultRarity")
+        .textContent =
+        "KNIFE · 100% DEMO";
 
-    rarity.textContent =
-        item[2].toUpperCase();
-
-    rarity.className =
-        "result-rarity " + item[2];
 
     document.getElementById("result")
-        .style.display = "block";
+        .style.display =
+        "block";
 
 
     inventory.unshift(item);
 
-    /*
-        Completing the tutorial unlocks
-        the other demo cases.
-    */
 
     if(!tutorialDone){
 
         tutorialDone = true;
 
-        document.getElementById("tutorialMessage")
-            .textContent =
-            "✅ Tutorial completed! Demo cases are now unlocked.";
+        document.getElementById(
+            "tutorialMessage"
+        ).textContent =
+            "✅ Tutorial dokončen! Ostatní demo cases jsou nyní odemčené.";
 
         renderCases();
 
@@ -1052,7 +1026,7 @@ function showResult(item){
 
 
 /* =========================
-   CLOSE
+   CLOSE MODAL
 ========================= */
 
 function closeCase(){
@@ -1073,19 +1047,26 @@ function closeCase(){
 function renderInventory(){
 
     const list =
-        document.getElementById("inventoryList");
+        document.getElementById(
+            "inventoryList"
+        );
 
     const count =
-        document.getElementById("inventoryCount");
+        document.getElementById(
+            "inventoryCount"
+        );
+
 
     count.textContent =
         inventory.length +
-        (inventory.length === 1
+        (
+            inventory.length === 1
             ? " item"
-            : " items");
+            : " items"
+        );
 
 
-    if(!inventory.length){
+    if(inventory.length === 0){
 
         list.innerHTML = `
             <div class="empty">
@@ -1098,6 +1079,7 @@ function renderInventory(){
 
 
     list.innerHTML = "";
+
 
     inventory.forEach(item=>{
 
@@ -1113,8 +1095,8 @@ function renderInventory(){
                     ${item[0]}
                 </div>
 
-                <div class="item-rarity ${item[2]}">
-                    ${item[2].toUpperCase()}
+                <div class="item-rarity gold">
+                    KNIFE
                 </div>
 
             </div>
@@ -1133,17 +1115,17 @@ function renderInventory(){
 function steamDemo(){
 
     alert(
-        "Steam Demo\n\n" +
-        "This button is only a visual demo. " +
-        "No Steam account is connected and no items " +
-        "can be transferred."
+        "STEAM DEMO\n\n" +
+        "Steam není skutečně připojený.\n" +
+        "Tato verze nepoužívá Steam login, " +
+        "platby ani převod skinů."
     );
 
 }
 
 
 /* =========================
-   INIT
+   START
 ========================= */
 
 renderCases();
