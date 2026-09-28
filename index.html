@@ -4,343 +4,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RÆVEN — Collectibles Demo</title>
+<title>RÆVEN — 100 Cases Demo</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-body {
+body{
     background:
-        radial-gradient(circle at top, #241010 0%, #0d0d0f 42%, #070708 100%);
-    color: white;
-    min-height: 100vh;
+        radial-gradient(circle at 50% -10%,#3a1010 0%,#111114 35%,#070708 75%);
+    color:#fff;
+    min-height:100vh;
 }
 
-header {
-    height: 72px;
-    background: rgba(10,10,12,.94);
-    border-bottom: 1px solid #2d2d32;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 35px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    backdrop-filter: blur(12px);
+header{
+    height:72px;
+    background:rgba(8,8,10,.96);
+    border-bottom:1px solid #29292f;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(12px);
 }
 
-.logo {
-    font-size: 27px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #ff3030;
+.logo{
+    color:#ff3030;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
-.nav {
-    display: flex;
-    gap: 25px;
-    color: #aaa;
-    font-size: 14px;
+.nav{
+    display:flex;
+    gap:24px;
 }
 
-.nav span {
-    cursor: pointer;
-    transition: .2s;
+.nav button{
+    background:none;
+    border:0;
+    color:#aaa;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.nav span:hover {
-    color: white;
+.nav button:hover{
+    color:#fff;
 }
 
-.balance-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.balance{
+    background:#17171c;
+    border:1px solid #34343b;
+    border-radius:10px;
+    padding:10px 15px;
+    font-weight:bold;
 }
 
-.balance {
-    background: #17171b;
-    border: 1px solid #303036;
-    padding: 10px 16px;
-    border-radius: 10px;
-    font-weight: bold;
-    color: #fff;
+.balance span{
+    color:#ff3636;
 }
 
-.balance span {
-    color: #ff3b3b;
+main{
+    width:min(1400px,94%);
+    margin:auto;
+    padding:30px 0 80px;
 }
 
-main {
-    max-width: 1250px;
-    margin: auto;
-    padding: 35px 20px 70px;
-}
-
-.hero {
+.hero{
     background:
-        linear-gradient(120deg, rgba(255,35,35,.16), rgba(255,255,255,.02)),
+        linear-gradient(120deg,rgba(255,30,30,.16),rgba(255,255,255,.015)),
         #111114;
-    border: 1px solid #29292e;
-    border-radius: 18px;
-    padding: 30px;
-    margin-bottom: 25px;
+    border:1px solid #2d2d33;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:28px;
 }
 
-.hero h1 {
-    font-size: 34px;
-    margin-bottom: 8px;
+.hero h1{
+    font-size:36px;
+    margin-bottom:8px;
 }
 
-.hero p {
-    color: #999;
+.hero p{
+    color:#888;
 }
 
-.money-panel {
-    margin-top: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.demo{
+    display:inline-block;
+    margin-top:12px;
+    color:#ff5555;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
 
-.money-btn {
-    border: 1px solid #3a3a40;
-    background: #19191e;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 9px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: .2s;
+.money{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-.money-btn:hover {
-    background: #ff3030;
-    border-color: #ff3030;
-    transform: translateY(-2px);
+.money button{
+    background:#1b1b20;
+    color:white;
+    border:1px solid #38383f;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0 15px;
+.money button:hover{
+    background:#ff3030;
+    border-color:#ff3030;
 }
 
-.section-title h2 {
-    font-size: 22px;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:28px 0 16px;
 }
 
-.section-title small {
-    color: #777;
+.section-head h2{
+    font-size:23px;
 }
 
-.cases {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+.section-head span{
+    color:#777;
+    font-size:13px;
 }
 
-.case {
-    background: #111114;
-    border: 1px solid #29292e;
-    border-radius: 15px;
-    padding: 18px;
-    transition: .25s;
+.cases{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:15px;
 }
 
-.case:hover {
-    transform: translateY(-4px);
-    border-color: #ff3030;
-    box-shadow: 0 10px 35px rgba(255,30,30,.12);
+.case{
+    background:#111114;
+    border:1px solid #29292f;
+    border-radius:14px;
+    padding:14px;
+    transition:.2s;
+    overflow:hidden;
 }
 
-.case-icon {
-    height: 125px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 62px;
-    background: #17171b;
-    border-radius: 11px;
-    margin-bottom: 14px;
+.case:hover{
+    transform:translateY(-4px);
+    border-color:#ff3030;
+    box-shadow:0 12px 35px rgba(255,30,30,.12);
 }
 
-.case h3 {
-    margin-bottom: 5px;
+.case-number{
+    color:#666;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:7px;
 }
 
-.case p {
-    color: #777;
-    font-size: 13px;
-    margin-bottom: 14px;
+.case-image{
+    height:130px;
+    background:
+        radial-gradient(circle,#371313 0%,#17171b 65%);
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    margin-bottom:13px;
+    border:1px solid #25252a;
 }
 
-.open-btn {
-    width: 100%;
-    padding: 11px;
-    border: 0;
-    border-radius: 8px;
-    background: #ff3030;
-    color: white;
-    font-weight: 900;
-    cursor: pointer;
-    transition: .2s;
+.case h3{
+    font-size:16px;
+    margin-bottom:6px;
 }
 
-.open-btn:hover {
-    background: #ff4949;
+.case-info{
+    color:#777;
+    font-size:12px;
+    min-height:32px;
+    margin-bottom:12px;
 }
 
-.open-btn:disabled {
-    opacity: .45;
-    cursor: not-allowed;
+.case-price{
+    color:#ff4141;
+    font-weight:bold;
+    margin-bottom:10px;
 }
 
-.inventory {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 15px;
+.open{
+    width:100%;
+    border:0;
+    border-radius:8px;
+    background:#ff3030;
+    color:white;
+    padding:10px;
+    cursor:pointer;
+    font-weight:900;
 }
 
-.item {
-    background: #111114;
-    border: 1px solid #29292e;
-    border-radius: 14px;
-    padding: 16px;
+.open:hover{
+    background:#ff4848;
 }
 
-.item-icon {
-    height: 110px;
-    background: #18181d;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 52px;
-    margin-bottom: 12px;
+.inventory{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:15px;
 }
 
-.item-name {
-    font-weight: bold;
-    margin-bottom: 6px;
+.item{
+    background:#111114;
+    border:1px solid #29292f;
+    border-radius:14px;
+    padding:14px;
 }
 
-.item-price {
-    color: #ff4545;
-    font-weight: bold;
-    margin-bottom: 12px;
+.item-icon{
+    height:110px;
+    background:#18181d;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:52px;
+    margin-bottom:12px;
 }
 
-.sell-btn {
-    width: 100%;
-    border: 1px solid #3c3c42;
-    background: #1b1b20;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+.item-name{
+    font-weight:bold;
+    margin-bottom:7px;
 }
 
-.sell-btn:hover {
-    background: #ff3030;
-    border-color: #ff3030;
+.item-price{
+    color:#ff4444;
+    font-weight:bold;
+    margin-bottom:12px;
 }
 
-.empty {
-    color: #666;
-    padding: 25px;
-    text-align: center;
-    border: 1px dashed #303036;
-    border-radius: 12px;
-    grid-column: 1 / -1;
+.sell{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #393940;
+    background:#1a1a1f;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.78);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
+.sell:hover{
+    background:#ff3030;
+    border-color:#ff3030;
 }
 
-.modal.active {
-    display: flex;
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:35px;
+    color:#666;
+    border:1px dashed #333;
+    border-radius:12px;
 }
 
-.modal-box {
-    width: min(700px, 92%);
-    background: #111114;
-    border: 1px solid #33333a;
-    border-radius: 18px;
-    padding: 25px;
-    text-align: center;
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:200;
 }
 
-.modal-box h2 {
-    margin-bottom: 8px;
+.modal.show{
+    display:flex;
 }
 
-.modal-box p {
-    color: #888;
-    margin-bottom: 20px;
+.modal-box{
+    width:min(650px,92%);
+    background:#111114;
+    border:1px solid #38383e;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
 }
 
-.roulette {
-    height: 150px;
-    background: #18181d;
-    border: 1px solid #303036;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 72px;
-    margin: 20px 0;
+.modal-box h2{
+    margin-bottom:7px;
 }
 
-.result {
-    display: none;
-    background: #18181d;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 15px;
+.modal-box p{
+    color:#888;
 }
 
-.result.show {
-    display: block;
+.spin{
+    height:180px;
+    margin:22px 0;
+    border-radius:12px;
+    background:#18181d;
+    border:1px solid #303037;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:85px;
 }
 
-.result-icon {
-    font-size: 70px;
-    margin-bottom: 10px;
+.result{
+    display:none;
 }
 
-.close-btn {
-    border: 0;
-    background: #333339;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
+.result.show{
+    display:block;
 }
 
-.close-btn:hover {
-    background: #44444b;
+.result-icon{
+    font-size:70px;
+    margin-bottom:8px;
 }
 
-.notice {
-    margin-top: 18px;
-    color: #666;
-    font-size: 12px;
+.close{
+    margin-top:18px;
+    background:#33333a;
+    border:0;
+    color:#fff;
+    padding:11px 25px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.close:hover{
+    background:#45454d;
+}
+
+.notice{
+    color:#666;
+    font-size:11px;
+    margin-top:14px;
+}
+
+@media(max-width:700px){
+    header{
+        padding:0 14px;
+    }
+
+    .nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .cases{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:450px){
+    .cases{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -348,96 +382,115 @@ main {
 <body>
 
 <header>
+
     <div class="logo">RÆVEN</div>
 
     <div class="nav">
-        <span onclick="scrollToSection('cases')">CASES</span>
-        <span onclick="scrollToSection('inventory')">INVENTORY</span>
+        <button onclick="go('cases')">CHESTS</button>
+        <button onclick="go('inventory')">INVENTORY</button>
     </div>
 
-    <div class="balance-box">
-        <div class="balance">
-            BALANCE: <span id="balance">$0.00</span>
-        </div>
+    <div class="balance">
+        BALANCE:
+        <span id="balance">$0.00</span>
     </div>
+
 </header>
 
 <main>
 
-    <section class="hero">
-        <h1>RÆVEN COLLECTIBLES</h1>
-        <p>Demo collectible system — everything here uses virtual credits.</p>
+<section class="hero">
 
-        <div class="money-panel">
-            <button class="money-btn" onclick="addMoney(5)">+ $5</button>
-            <button class="money-btn" onclick="addMoney(10)">+ $10</button>
-            <button class="money-btn" onclick="addMoney(50)">+ $50</button>
-            <button class="money-btn" onclick="addMoney(100)">+ $100</button>
+    <h1>RÆVEN CHEST OPENING</h1>
+
+    <p>
+        100 virtual chests • demo collectibles • inventory
+    </p>
+
+    <div class="demo">
+        DEMO CREDITS ONLY
+    </div>
+
+    <div class="money">
+
+        <button onclick="addCredits(5)">
+            + $5
+        </button>
+
+        <button onclick="addCredits(10)">
+            + $10
+        </button>
+
+        <button onclick="addCredits(25)">
+            + $25
+        </button>
+
+        <button onclick="addCredits(50)">
+            + $50
+        </button>
+
+        <button onclick="addCredits(100)">
+            + $100
+        </button>
+
+        <button onclick="resetDemo()">
+            RESET DEMO
+        </button>
+
+    </div>
+
+    <div class="notice">
+        Credits mají pouze demo hodnotu a nejde je směnit za skutečné peníze.
+    </div>
+
+</section>
+
+
+<section id="cases">
+
+    <div class="section-head">
+        <h2>100 CHESTS</h2>
+        <span>Choose a chest</span>
+    </div>
+
+    <div class="cases" id="caseList"></div>
+
+</section>
+
+
+<section id="inventory">
+
+    <div class="section-head">
+        <h2>INVENTORY</h2>
+        <span id="inventoryCount">0 items</span>
+    </div>
+
+    <div class="inventory" id="inventoryList">
+
+        <div class="empty">
+            Inventory je prázdný.
         </div>
 
-        <div class="notice">
-            Demo credits only. No real money is used.
-        </div>
-    </section>
+    </div>
 
-    <section id="cases">
-
-        <div class="section-title">
-            <h2>COLLECTIBLE BOXES</h2>
-            <small>Virtual demo</small>
-        </div>
-
-        <div class="cases">
-
-            <div class="case">
-                <div class="case-icon">📦</div>
-                <h3>Raven Box</h3>
-                <p>Basic collectible box.</p>
-                <button class="open-btn" onclick="openCase(3)">OPEN — $3</button>
-            </div>
-
-            <div class="case">
-                <div class="case-icon">🎁</div>
-                <h3>Red Box</h3>
-                <p>Contains premium collectibles.</p>
-                <button class="open-btn" onclick="openCase(7)">OPEN — $7</button>
-            </div>
-
-            <div class="case">
-                <div class="case-icon">💎</div>
-                <h3>Elite Box</h3>
-                <p>High-value cosmetic collectibles.</p>
-                <button class="open-btn" onclick="openCase(15)">OPEN — $15</button>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="inventory">
-
-        <div class="section-title">
-            <h2>INVENTORY</h2>
-            <small id="inventoryCount">0 items</small>
-        </div>
-
-        <div class="inventory" id="inventoryList">
-            <div class="empty">
-                Inventory je prázdný.
-            </div>
-        </div>
-
-    </section>
+</section>
 
 </main>
+
 
 <div class="modal" id="modal">
 
     <div class="modal-box">
 
-        <h2>OPENING BOX</h2>
-        <p>Generating your collectible...</p>
+        <h2 id="openingTitle">
+            OPENING CHEST
+        </h2>
 
-        <div class="roulette" id="roulette">
+        <p>
+            Generating your virtual collectible...
+        </p>
+
+        <div class="spin" id="spin">
             📦
         </div>
 
@@ -455,7 +508,7 @@ main {
                 Value: $0.00
             </p>
 
-            <button class="close-btn" onclick="closeModal()">
+            <button class="close" onclick="closeModal()">
                 CLOSE
             </button>
 
@@ -465,127 +518,426 @@ main {
 
 </div>
 
+
 <script>
 
 let balance = 0;
 let inventory = [];
 
-const collectibles = [
-    {
-        name: "Raven Sticker",
-        icon: "🦅",
-        price: 2
-    },
-    {
-        name: "Red Raven Patch",
-        icon: "🔴",
-        price: 4
-    },
-    {
-        name: "RÆVEN Charm",
-        icon: "🐦‍⬛",
-        price: 6
-    },
-    {
-        name: "Pixel Badge",
-        icon: "🟪",
-        price: 8
-    },
-    {
-        name: "Elite Raven Badge",
-        icon: "💎",
-        price: 15
-    },
-    {
-        name: "Golden Raven Card",
-        icon: "🏆",
-        price: 25
-    }
+const icons = [
+    "🔴",
+    "🟣",
+    "🔵",
+    "🟢",
+    "🟡",
+    "🟠",
+    "💎",
+    "⭐",
+    "🔥",
+    "🐦‍⬛"
 ];
 
-function updateBalance() {
+const rarities = [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary"
+];
+
+
+/* =========================
+   100 CHESTS
+========================= */
+
+const chestNames = [
+    "Raven Starter",
+    "Red Raven",
+    "Black Raven",
+    "Shadow",
+    "Crimson",
+    "Inferno",
+    "Night",
+    "Blood Moon",
+    "Dark Matter",
+    "Phantom",
+
+    "Ruby",
+    "Scarlet",
+    "Red Storm",
+    "Fire",
+    "Hellfire",
+    "Volcano",
+    "Magma",
+    "Lava",
+    "Burning Raven",
+    "Red Eclipse",
+
+    "Blue Moon",
+    "Ocean",
+    "Ice",
+    "Frozen",
+    "Arctic",
+    "Deep Sea",
+    "Blue Storm",
+    "Cyber Blue",
+    "Sapphire",
+    "Neon Blue",
+
+    "Emerald",
+    "Jungle",
+    "Toxic",
+    "Acid",
+    "Green Storm",
+    "Venom",
+    "Forest",
+    "Emerald Night",
+    "Toxic Raven",
+    "Radioactive",
+
+    "Purple Night",
+    "Violet",
+    "Royal",
+    "Amethyst",
+    "Galaxy",
+    "Cosmic",
+    "Void",
+    "Purple Storm",
+    "Dark Violet",
+    "Neon Purple",
+
+    "Gold",
+    "Golden Raven",
+    "Crown",
+    "Royal Gold",
+    "Treasure",
+    "King",
+    "Golden Night",
+    "Gold Storm",
+    "Luxury",
+    "Diamond Gold",
+
+    "Diamond",
+    "Crystal",
+    "Ice Diamond",
+    "Blue Diamond",
+    "Red Diamond",
+    "Black Diamond",
+    "Royal Diamond",
+    "Diamond Storm",
+    "Diamond Night",
+    "Ultra Diamond",
+
+    "Cyber",
+    "Cyber Raven",
+    "Digital",
+    "Pixel",
+    "Glitch",
+    "Neon",
+    "Future",
+    "Cyber Storm",
+    "Hologram",
+    "Tech",
+
+    "Legend",
+    "Legendary Raven",
+    "Mythic",
+    "Ancient",
+    "Dragon",
+    "Titan",
+    "Godlike",
+    "Ultimate",
+    "Infinity",
+    "RÆVEN LEGEND"
+];
+
+
+/* =========================
+   CREATE 100 CHESTS
+========================= */
+
+const chests = [];
+
+for(let i = 0; i < 100; i++){
+
+    const price =
+        i < 10 ? 2 + i :
+        i < 20 ? 5 + (i - 10) * 2 :
+        i < 40 ? 10 + (i - 20) * 2 :
+        i < 60 ? 20 + (i - 40) * 3 :
+        i < 80 ? 40 + (i - 60) * 4 :
+        100 + (i - 80) * 8;
+
+    chests.push({
+        id: i + 1,
+        name: chestNames[i],
+        price: price,
+        icon: icons[i % icons.length]
+    });
+}
+
+
+/* =========================
+   RENDER CHESTS
+========================= */
+
+function renderChests(){
+
+    const container =
+        document.getElementById("caseList");
+
+    container.innerHTML = "";
+
+    chests.forEach(chest => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "case";
+
+        card.innerHTML = `
+
+            <div class="case-number">
+                CHEST #${chest.id}
+            </div>
+
+            <div class="case-image">
+                ${chest.icon}
+            </div>
+
+            <h3>
+                ${chest.name}
+            </h3>
+
+            <div class="case-info">
+                Virtual collectible chest
+            </div>
+
+            <div class="case-price">
+                $${chest.price.toFixed(2)}
+            </div>
+
+            <button
+                class="open"
+                onclick="openChest(${chest.id})"
+            >
+                OPEN CHEST
+            </button>
+
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+
+/* =========================
+   CREDITS
+========================= */
+
+function addCredits(amount){
+
+    balance += amount;
+
+    updateBalance();
+}
+
+
+function updateBalance(){
+
     document.getElementById("balance").textContent =
         "$" + balance.toFixed(2);
 }
 
-function addMoney(amount) {
-    balance += amount;
-    updateBalance();
-}
 
-function openCase(cost) {
+/* =========================
+   OPEN CHEST
+========================= */
 
-    if (balance < cost) {
-        alert("Nemáš dostatek demo credits.");
+function openChest(id){
+
+    const chest =
+        chests.find(c => c.id === id);
+
+    if(!chest) return;
+
+    if(balance < chest.price){
+
+        alert(
+            "Nemáš dostatek demo credits.\n\n" +
+            "Potřebuješ: $" +
+            chest.price.toFixed(2)
+        );
+
         return;
     }
 
-    balance -= cost;
+
+    balance -= chest.price;
+
     updateBalance();
 
-    const modal = document.getElementById("modal");
-    const roulette = document.getElementById("roulette");
-    const result = document.getElementById("result");
+
+    const modal =
+        document.getElementById("modal");
+
+    const spin =
+        document.getElementById("spin");
+
+    const result =
+        document.getElementById("result");
+
+
+    document.getElementById("openingTitle").textContent =
+        chest.name;
+
 
     result.classList.remove("show");
-    modal.classList.add("active");
 
-    let counter = 0;
+    modal.classList.add("show");
 
-    const animation = setInterval(() => {
 
-        const random =
-            collectibles[
-                Math.floor(Math.random() * collectibles.length)
-            ];
+    let ticks = 0;
 
-        roulette.textContent = random.icon;
 
-        counter++;
+    const animation =
+        setInterval(() => {
 
-        if (counter >= 18) {
-
-            clearInterval(animation);
-
-            const item =
-                collectibles[
-                    Math.floor(Math.random() * collectibles.length)
+            const randomIcon =
+                icons[
+                    Math.floor(
+                        Math.random() * icons.length
+                    )
                 ];
 
-            inventory.push({
-                ...item,
-                id: Date.now() + Math.random()
-            });
+            spin.textContent = randomIcon;
 
-            roulette.textContent = item.icon;
+            ticks++;
 
-            document.getElementById("resultIcon").textContent =
-                item.icon;
 
-            document.getElementById("resultName").textContent =
-                item.name;
+            if(ticks >= 22){
 
-            document.getElementById("resultPrice").textContent =
-                "Value: $" + item.price.toFixed(2);
+                clearInterval(animation);
 
-            result.classList.add("show");
 
-            renderInventory();
-        }
+                const item =
+                    createRandomItem(chest);
 
-    }, 90);
+
+                inventory.push(item);
+
+
+                spin.textContent =
+                    item.icon;
+
+
+                document.getElementById("resultIcon")
+                    .textContent = item.icon;
+
+
+                document.getElementById("resultName")
+                    .textContent = item.name;
+
+
+                document.getElementById("resultPrice")
+                    .textContent =
+                    "Demo value: $" +
+                    item.price.toFixed(2);
+
+
+                result.classList.add("show");
+
+
+                renderInventory();
+
+            }
+
+        },80);
 }
 
-function renderInventory() {
 
-    const list = document.getElementById("inventoryList");
-    const count = document.getElementById("inventoryCount");
+/* =========================
+   RANDOM ITEM
+========================= */
+
+function createRandomItem(chest){
+
+    const rarityIndex =
+        Math.floor(
+            Math.random() * rarities.length
+        );
+
+    const rarity =
+        rarities[rarityIndex];
+
+
+    const multiplier =
+        1 + rarityIndex * 0.7;
+
+
+    const base =
+        chest.price * multiplier;
+
+
+    const price =
+        Math.max(
+            1,
+            Math.round(base * 100) / 100
+        );
+
+
+    const icon =
+        icons[
+            Math.floor(
+                Math.random() * icons.length
+            )
+        ];
+
+
+    return {
+
+        id:
+            Date.now() +
+            Math.random(),
+
+        name:
+            "RÆVEN " +
+            rarity +
+            " Collectible",
+
+        rarity:
+            rarity,
+
+        icon:
+            icon,
+
+        price:
+            price
+    };
+}
+
+
+/* =========================
+   INVENTORY
+========================= */
+
+function renderInventory(){
+
+    const list =
+        document.getElementById("inventoryList");
+
+    const count =
+        document.getElementById("inventoryCount");
+
 
     count.textContent =
         inventory.length +
-        (inventory.length === 1 ? " item" : " items");
+        (inventory.length === 1
+            ? " item"
+            : " items");
 
-    if (inventory.length === 0) {
+
+    if(inventory.length === 0){
 
         list.innerHTML = `
             <div class="empty">
@@ -596,19 +948,30 @@ function renderInventory() {
         return;
     }
 
+
     list.innerHTML = "";
 
-    inventory.forEach((item, index) => {
 
-        const div = document.createElement("div");
+    inventory.forEach((item,index) => {
 
-        div.className = "item";
+        const card =
+            document.createElement("div");
 
-        div.innerHTML = `
-            <div class="item-icon">${item.icon}</div>
+        card.className = "item";
+
+
+        card.innerHTML = `
+
+            <div class="item-icon">
+                ${item.icon}
+            </div>
 
             <div class="item-name">
                 ${item.name}
+            </div>
+
+            <div style="color:#777;font-size:12px;margin-bottom:7px;">
+                ${item.rarity}
             </div>
 
             <div class="item-price">
@@ -616,47 +979,1186 @@ function renderInventory() {
             </div>
 
             <button
-                class="sell-btn"
+                class="sell"
                 onclick="sellItem(${index})"
             >
                 SELL FOR $${item.price.toFixed(2)}
             </button>
+
         `;
 
-        list.appendChild(div);
+
+        list.appendChild(card);
+
     });
 }
 
-function sellItem(index) {
 
-    const item = inventory[index];
+/* =========================
+   SELL
+========================= */
 
-    if (!item) return;
+function sellItem(index){
+
+    const item =
+        inventory[index];
+
+    if(!item) return;
+
 
     balance += item.price;
 
-    inventory.splice(index, 1);
+
+    inventory.splice(index,1);
+
 
     updateBalance();
+
     renderInventory();
 }
 
-function closeModal() {
-    document.getElementById("modal").classList.remove("active");
+
+/* =========================
+   MODAL
+========================= */
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
 }
 
-function scrollToSection(id) {
 
-    const element = document.getElementById(id);
+/* =========================
+   NAVIGATION
+========================= */
 
-    if (element) {
+function go(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
         element.scrollIntoView({
-            behavior: "smooth"
+            behavior:"smooth"
         });
+
     }
 }
 
+
+/* =========================
+   RESET
+========================= */
+
+function resetDemo(){
+
+    balance = 0;
+
+    inventory = [];
+
+    updateBalance();
+
+    renderInventory();
+
+    closeModal();
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderChests();
+
 updateBalance();
+
+renderInventory();
+
+</script>
+
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RÆVEN — 100 Cases Demo</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(circle at 50% -10%,#3a1010 0%,#111114 35%,#070708 75%);
+    color:#fff;
+    min-height:100vh;
+}
+
+header{
+    height:72px;
+    background:rgba(8,8,10,.96);
+    border-bottom:1px solid #29292f;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(12px);
+}
+
+.logo{
+    color:#ff3030;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.nav{
+    display:flex;
+    gap:24px;
+}
+
+.nav button{
+    background:none;
+    border:0;
+    color:#aaa;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.nav button:hover{
+    color:#fff;
+}
+
+.balance{
+    background:#17171c;
+    border:1px solid #34343b;
+    border-radius:10px;
+    padding:10px 15px;
+    font-weight:bold;
+}
+
+.balance span{
+    color:#ff3636;
+}
+
+main{
+    width:min(1400px,94%);
+    margin:auto;
+    padding:30px 0 80px;
+}
+
+.hero{
+    background:
+        linear-gradient(120deg,rgba(255,30,30,.16),rgba(255,255,255,.015)),
+        #111114;
+    border:1px solid #2d2d33;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:28px;
+}
+
+.hero h1{
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+.hero p{
+    color:#888;
+}
+
+.demo{
+    display:inline-block;
+    margin-top:12px;
+    color:#ff5555;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.money{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.money button{
+    background:#1b1b20;
+    color:white;
+    border:1px solid #38383f;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.money button:hover{
+    background:#ff3030;
+    border-color:#ff3030;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:28px 0 16px;
+}
+
+.section-head h2{
+    font-size:23px;
+}
+
+.section-head span{
+    color:#777;
+    font-size:13px;
+}
+
+.cases{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:15px;
+}
+
+.case{
+    background:#111114;
+    border:1px solid #29292f;
+    border-radius:14px;
+    padding:14px;
+    transition:.2s;
+    overflow:hidden;
+}
+
+.case:hover{
+    transform:translateY(-4px);
+    border-color:#ff3030;
+    box-shadow:0 12px 35px rgba(255,30,30,.12);
+}
+
+.case-number{
+    color:#666;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.case-image{
+    height:130px;
+    background:
+        radial-gradient(circle,#371313 0%,#17171b 65%);
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    margin-bottom:13px;
+    border:1px solid #25252a;
+}
+
+.case h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.case-info{
+    color:#777;
+    font-size:12px;
+    min-height:32px;
+    margin-bottom:12px;
+}
+
+.case-price{
+    color:#ff4141;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.open{
+    width:100%;
+    border:0;
+    border-radius:8px;
+    background:#ff3030;
+    color:white;
+    padding:10px;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.open:hover{
+    background:#ff4848;
+}
+
+.inventory{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:15px;
+}
+
+.item{
+    background:#111114;
+    border:1px solid #29292f;
+    border-radius:14px;
+    padding:14px;
+}
+
+.item-icon{
+    height:110px;
+    background:#18181d;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.item-name{
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.item-price{
+    color:#ff4444;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.sell{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #393940;
+    background:#1a1a1f;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.sell:hover{
+    background:#ff3030;
+    border-color:#ff3030;
+}
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    padding:35px;
+    color:#666;
+    border:1px dashed #333;
+    border-radius:12px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:200;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(650px,92%);
+    background:#111114;
+    border:1px solid #38383e;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+}
+
+.modal-box h2{
+    margin-bottom:7px;
+}
+
+.modal-box p{
+    color:#888;
+}
+
+.spin{
+    height:180px;
+    margin:22px 0;
+    border-radius:12px;
+    background:#18181d;
+    border:1px solid #303037;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:85px;
+}
+
+.result{
+    display:none;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-icon{
+    font-size:70px;
+    margin-bottom:8px;
+}
+
+.close{
+    margin-top:18px;
+    background:#33333a;
+    border:0;
+    color:#fff;
+    padding:11px 25px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.close:hover{
+    background:#45454d;
+}
+
+.notice{
+    color:#666;
+    font-size:11px;
+    margin-top:14px;
+}
+
+@media(max-width:700px){
+    header{
+        padding:0 14px;
+    }
+
+    .nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .cases{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:450px){
+    .cases{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">RÆVEN</div>
+
+    <div class="nav">
+        <button onclick="go('cases')">CHESTS</button>
+        <button onclick="go('inventory')">INVENTORY</button>
+    </div>
+
+    <div class="balance">
+        BALANCE:
+        <span id="balance">$0.00</span>
+    </div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+    <h1>RÆVEN CHEST OPENING</h1>
+
+    <p>
+        100 virtual chests • demo collectibles • inventory
+    </p>
+
+    <div class="demo">
+        DEMO CREDITS ONLY
+    </div>
+
+    <div class="money">
+
+        <button onclick="addCredits(5)">
+            + $5
+        </button>
+
+        <button onclick="addCredits(10)">
+            + $10
+        </button>
+
+        <button onclick="addCredits(25)">
+            + $25
+        </button>
+
+        <button onclick="addCredits(50)">
+            + $50
+        </button>
+
+        <button onclick="addCredits(100)">
+            + $100
+        </button>
+
+        <button onclick="resetDemo()">
+            RESET DEMO
+        </button>
+
+    </div>
+
+    <div class="notice">
+        Credits mají pouze demo hodnotu a nejde je směnit za skutečné peníze.
+    </div>
+
+</section>
+
+
+<section id="cases">
+
+    <div class="section-head">
+        <h2>100 CHESTS</h2>
+        <span>Choose a chest</span>
+    </div>
+
+    <div class="cases" id="caseList"></div>
+
+</section>
+
+
+<section id="inventory">
+
+    <div class="section-head">
+        <h2>INVENTORY</h2>
+        <span id="inventoryCount">0 items</span>
+    </div>
+
+    <div class="inventory" id="inventoryList">
+
+        <div class="empty">
+            Inventory je prázdný.
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <h2 id="openingTitle">
+            OPENING CHEST
+        </h2>
+
+        <p>
+            Generating your virtual collectible...
+        </p>
+
+        <div class="spin" id="spin">
+            📦
+        </div>
+
+        <div class="result" id="result">
+
+            <div class="result-icon" id="resultIcon">
+                ⭐
+            </div>
+
+            <h2 id="resultName">
+                Collectible
+            </h2>
+
+            <p id="resultPrice">
+                Value: $0.00
+            </p>
+
+            <button class="close" onclick="closeModal()">
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let balance = 0;
+let inventory = [];
+
+const icons = [
+    "🔴",
+    "🟣",
+    "🔵",
+    "🟢",
+    "🟡",
+    "🟠",
+    "💎",
+    "⭐",
+    "🔥",
+    "🐦‍⬛"
+];
+
+const rarities = [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary"
+];
+
+
+/* =========================
+   100 CHESTS
+========================= */
+
+const chestNames = [
+    "Raven Starter",
+    "Red Raven",
+    "Black Raven",
+    "Shadow",
+    "Crimson",
+    "Inferno",
+    "Night",
+    "Blood Moon",
+    "Dark Matter",
+    "Phantom",
+
+    "Ruby",
+    "Scarlet",
+    "Red Storm",
+    "Fire",
+    "Hellfire",
+    "Volcano",
+    "Magma",
+    "Lava",
+    "Burning Raven",
+    "Red Eclipse",
+
+    "Blue Moon",
+    "Ocean",
+    "Ice",
+    "Frozen",
+    "Arctic",
+    "Deep Sea",
+    "Blue Storm",
+    "Cyber Blue",
+    "Sapphire",
+    "Neon Blue",
+
+    "Emerald",
+    "Jungle",
+    "Toxic",
+    "Acid",
+    "Green Storm",
+    "Venom",
+    "Forest",
+    "Emerald Night",
+    "Toxic Raven",
+    "Radioactive",
+
+    "Purple Night",
+    "Violet",
+    "Royal",
+    "Amethyst",
+    "Galaxy",
+    "Cosmic",
+    "Void",
+    "Purple Storm",
+    "Dark Violet",
+    "Neon Purple",
+
+    "Gold",
+    "Golden Raven",
+    "Crown",
+    "Royal Gold",
+    "Treasure",
+    "King",
+    "Golden Night",
+    "Gold Storm",
+    "Luxury",
+    "Diamond Gold",
+
+    "Diamond",
+    "Crystal",
+    "Ice Diamond",
+    "Blue Diamond",
+    "Red Diamond",
+    "Black Diamond",
+    "Royal Diamond",
+    "Diamond Storm",
+    "Diamond Night",
+    "Ultra Diamond",
+
+    "Cyber",
+    "Cyber Raven",
+    "Digital",
+    "Pixel",
+    "Glitch",
+    "Neon",
+    "Future",
+    "Cyber Storm",
+    "Hologram",
+    "Tech",
+
+    "Legend",
+    "Legendary Raven",
+    "Mythic",
+    "Ancient",
+    "Dragon",
+    "Titan",
+    "Godlike",
+    "Ultimate",
+    "Infinity",
+    "RÆVEN LEGEND"
+];
+
+
+/* =========================
+   CREATE 100 CHESTS
+========================= */
+
+const chests = [];
+
+for(let i = 0; i < 100; i++){
+
+    const price =
+        i < 10 ? 2 + i :
+        i < 20 ? 5 + (i - 10) * 2 :
+        i < 40 ? 10 + (i - 20) * 2 :
+        i < 60 ? 20 + (i - 40) * 3 :
+        i < 80 ? 40 + (i - 60) * 4 :
+        100 + (i - 80) * 8;
+
+    chests.push({
+        id: i + 1,
+        name: chestNames[i],
+        price: price,
+        icon: icons[i % icons.length]
+    });
+}
+
+
+/* =========================
+   RENDER CHESTS
+========================= */
+
+function renderChests(){
+
+    const container =
+        document.getElementById("caseList");
+
+    container.innerHTML = "";
+
+    chests.forEach(chest => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "case";
+
+        card.innerHTML = `
+
+            <div class="case-number">
+                CHEST #${chest.id}
+            </div>
+
+            <div class="case-image">
+                ${chest.icon}
+            </div>
+
+            <h3>
+                ${chest.name}
+            </h3>
+
+            <div class="case-info">
+                Virtual collectible chest
+            </div>
+
+            <div class="case-price">
+                $${chest.price.toFixed(2)}
+            </div>
+
+            <button
+                class="open"
+                onclick="openChest(${chest.id})"
+            >
+                OPEN CHEST
+            </button>
+
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+
+/* =========================
+   CREDITS
+========================= */
+
+function addCredits(amount){
+
+    balance += amount;
+
+    updateBalance();
+}
+
+
+function updateBalance(){
+
+    document.getElementById("balance").textContent =
+        "$" + balance.toFixed(2);
+}
+
+
+/* =========================
+   OPEN CHEST
+========================= */
+
+function openChest(id){
+
+    const chest =
+        chests.find(c => c.id === id);
+
+    if(!chest) return;
+
+    if(balance < chest.price){
+
+        alert(
+            "Nemáš dostatek demo credits.\n\n" +
+            "Potřebuješ: $" +
+            chest.price.toFixed(2)
+        );
+
+        return;
+    }
+
+
+    balance -= chest.price;
+
+    updateBalance();
+
+
+    const modal =
+        document.getElementById("modal");
+
+    const spin =
+        document.getElementById("spin");
+
+    const result =
+        document.getElementById("result");
+
+
+    document.getElementById("openingTitle").textContent =
+        chest.name;
+
+
+    result.classList.remove("show");
+
+    modal.classList.add("show");
+
+
+    let ticks = 0;
+
+
+    const animation =
+        setInterval(() => {
+
+            const randomIcon =
+                icons[
+                    Math.floor(
+                        Math.random() * icons.length
+                    )
+                ];
+
+            spin.textContent = randomIcon;
+
+            ticks++;
+
+
+            if(ticks >= 22){
+
+                clearInterval(animation);
+
+
+                const item =
+                    createRandomItem(chest);
+
+
+                inventory.push(item);
+
+
+                spin.textContent =
+                    item.icon;
+
+
+                document.getElementById("resultIcon")
+                    .textContent = item.icon;
+
+
+                document.getElementById("resultName")
+                    .textContent = item.name;
+
+
+                document.getElementById("resultPrice")
+                    .textContent =
+                    "Demo value: $" +
+                    item.price.toFixed(2);
+
+
+                result.classList.add("show");
+
+
+                renderInventory();
+
+            }
+
+        },80);
+}
+
+
+/* =========================
+   RANDOM ITEM
+========================= */
+
+function createRandomItem(chest){
+
+    const rarityIndex =
+        Math.floor(
+            Math.random() * rarities.length
+        );
+
+    const rarity =
+        rarities[rarityIndex];
+
+
+    const multiplier =
+        1 + rarityIndex * 0.7;
+
+
+    const base =
+        chest.price * multiplier;
+
+
+    const price =
+        Math.max(
+            1,
+            Math.round(base * 100) / 100
+        );
+
+
+    const icon =
+        icons[
+            Math.floor(
+                Math.random() * icons.length
+            )
+        ];
+
+
+    return {
+
+        id:
+            Date.now() +
+            Math.random(),
+
+        name:
+            "RÆVEN " +
+            rarity +
+            " Collectible",
+
+        rarity:
+            rarity,
+
+        icon:
+            icon,
+
+        price:
+            price
+    };
+}
+
+
+/* =========================
+   INVENTORY
+========================= */
+
+function renderInventory(){
+
+    const list =
+        document.getElementById("inventoryList");
+
+    const count =
+        document.getElementById("inventoryCount");
+
+
+    count.textContent =
+        inventory.length +
+        (inventory.length === 1
+            ? " item"
+            : " items");
+
+
+    if(inventory.length === 0){
+
+        list.innerHTML = `
+            <div class="empty">
+                Inventory je prázdný.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    inventory.forEach((item,index) => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "item";
+
+
+        card.innerHTML = `
+
+            <div class="item-icon">
+                ${item.icon}
+            </div>
+
+            <div class="item-name">
+                ${item.name}
+            </div>
+
+            <div style="color:#777;font-size:12px;margin-bottom:7px;">
+                ${item.rarity}
+            </div>
+
+            <div class="item-price">
+                $${item.price.toFixed(2)}
+            </div>
+
+            <button
+                class="sell"
+                onclick="sellItem(${index})"
+            >
+                SELL FOR $${item.price.toFixed(2)}
+            </button>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+}
+
+
+/* =========================
+   SELL
+========================= */
+
+function sellItem(index){
+
+    const item =
+        inventory[index];
+
+    if(!item) return;
+
+
+    balance += item.price;
+
+
+    inventory.splice(index,1);
+
+
+    updateBalance();
+
+    renderInventory();
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function go(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetDemo(){
+
+    balance = 0;
+
+    inventory = [];
+
+    updateBalance();
+
+    renderInventory();
+
+    closeModal();
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderChests();
+
+updateBalance();
+
 renderInventory();
 
 </script>
